@@ -1,20 +1,9 @@
 {
   "name": "covid_rcp_webapp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tozanni/covid_rcp_webapp.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tozanni/covid_rcp_webapp/issues"
-  },
-  "homepage": "https://github.com/tozanni/covid_rcp_webapp#readme"
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.8",
+    "@uirouter/angularjs": "0.2.18"
+  }
 }
