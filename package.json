@@ -1,9 +1,0 @@
-{
-  "name": "covid_rcp_webapp",
-  "version": "0.0.0",
-  "private": true,
-  "dependencies": {
-    "angular": "1.5.8",
-    "@uirouter/angularjs": "0.2.18"
-  }
-}
