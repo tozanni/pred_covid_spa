@@ -50,7 +50,7 @@ Encore
     .autoProvidejQuery()
 
     .enablePostCssLoader()
-    .enableVueLoader()
+    .enableVueLoader(() => {}, { runtimeCompilerBuild: true })
 
     .addPlugin(new CopyWebpackPlugin({patterns: [
             { from: 'src/assets/static', to: 'static' }
