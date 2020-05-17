@@ -1,60 +1,41 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <v-navigation-drawer app clipped left v-model="drawer">
+      <v-list dense>
+        <v-list-item>
+          <v-list-item-action>
+            <v-icon>mdi-exit-to-app</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Contacto</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar app clipped-right color="primary" dark>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-toolbar-title>Probabilidad de RcP</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <v-container fluid>
+        <router-view :key="$route.path" />
+      </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
-  name: 'App',
+  name: "App",
 
-  components: {
-    HelloWorld,
-  },
+  components: {},
 
   data: () => ({
-    //
+    drawer: null
   }),
 };
 </script>
