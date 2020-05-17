@@ -4,5 +4,6 @@
   "build/app.js": "/build/app.js",
   "build/runtime.js": "/build/runtime.js",
   "build/images/logo.png": "/build/images/logo.26bd867d.png",
-  "build/static/.gitignore": "/build/static/.gitignore"
+  "build/static/.gitignore": "/build/static/.gitignore",
+  "build/static/logo.svg": "/build/static/logo.svg"
 }

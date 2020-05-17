@@ -4,14 +4,15 @@
   "private": true,
   "scripts": {
     "build": "encore production --progress",
-    "start": "encore dev-server",
     "dev": "encore dev",
+    "start": "encore dev-server",
     "watch": "encore dev --watch"
   },
   "dependencies": {
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
+    "vuetify": "^2.2.11",
     "vuex": "^3.1.3"
   },
   "devDependencies": {
@@ -20,8 +21,13 @@
     "@vue/cli-plugin-router": "~4.3.0",
     "@vue/cli-plugin-vuex": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
+    "copy-webpack-plugin": "^6.0.1",
     "postcss-loader": "^3.0.0",
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "vue-cli-plugin-vuetify": "~2.0.5",
     "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.3.0",
     "webpack-notifier": "^1.6.0"
   }
 }

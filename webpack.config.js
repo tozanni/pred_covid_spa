@@ -1,5 +1,6 @@
 let Encore = require('@symfony/webpack-encore');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 Encore
     // directory where compiled assets will be stored
@@ -40,7 +41,7 @@ Encore
     //.enableVersioning(Encore.isProduction())
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
@@ -51,9 +52,9 @@ Encore
     .enablePostCssLoader()
     .enableVueLoader()
 
-    .addPlugin(new CopyWebpackPlugin([
-        { from: 'src/assets/static', to: 'static' }
-    ]))
+    .addPlugin(new CopyWebpackPlugin({patterns: [
+            { from: 'src/assets/static', to: 'static' }
+    ]}))
+    .addPlugin(new VuetifyLoaderPlugin())
 ;
-//global.manifest = require('public/build/manifest.json');
 module.exports = Encore.getWebpackConfig();
