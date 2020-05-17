@@ -1,4 +1,4 @@
-# covid
+# Covid RCP Webapp
 
 ## Project setup
 ```
@@ -7,7 +7,12 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+yarn start
+```
+
+### Compiles and generate assets for development
+```
+yarn dev
 ```
 
 ### Compiles and minifies for production
