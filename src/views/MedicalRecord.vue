@@ -21,7 +21,7 @@
     <CardLink class="mb-5" title="Signos Vitales" subtitle="Completado hace 2 dias" :to="{name: 'vitals'}"/>
     <CardLink class="mb-5" title="Triage" subtitle="Completado hace 2 dias" :to="{name: 'triage'}"/>
     <CardLink class="mb-5" title="Laboratorios" subtitle="Completado hace 2 dias" :to="{name: 'laboratorios'}"/>
-    <CardLink class="mb-5" title="Notas Medicas" subtitle="Incompleto" :completed="false" :to="{name: 'notes'}"/>
+    <CardLink class="mb-5" title="Notas Medicas" subtitle="Incompleto" :completed="false" :to="{name: 'notas'}"/>
   </div>
 </template>
 

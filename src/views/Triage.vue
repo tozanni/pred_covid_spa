@@ -112,7 +112,4 @@ export default {
 </script>
 
 <style scoped>
-.spacer {
-  margin: 1em 0;
-}
 </style>

@@ -34,7 +34,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "Laboratorios" */ "../views/Laboratorios"),
   },
   {
-    path: "/notas-medica",
+    path: "/notas-medicas",
     name: "notas",
     meta: {title: 'Notas Medicas'},
     component: () => import(/* webpackChunkName: "Notes" */ "../views/Notes"),

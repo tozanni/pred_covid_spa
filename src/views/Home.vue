@@ -45,7 +45,7 @@ export default {
   grid-area: main;
   display: flex;
   flex-flow: column;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -53,7 +53,7 @@ export default {
   grid-area: login;
   display: flex;
   flex-flow: column;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
 </style>

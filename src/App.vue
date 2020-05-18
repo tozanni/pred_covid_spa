@@ -2,7 +2,7 @@
   <v-app>
     <v-navigation-drawer app clipped left v-model="drawer">
       <v-list dense>
-        <v-list-item :to="{name: 'home'}" link>
+        <v-list-item :to="{ name: 'home' }" link>
           <v-list-item-action>
             <v-icon>mdi-exit-to-app</v-icon>
           </v-list-item-action>
@@ -35,7 +35,13 @@ export default {
   components: {},
 
   data: () => ({
-    drawer: null
+    drawer: null,
   }),
 };
 </script>
+
+<style>
+.spacer {
+  margin: 1em 0;
+}
+</style>
