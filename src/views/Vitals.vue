@@ -1,6 +1,5 @@
 <template>
   <v-container fluid>
-    <v-form>
       <v-text-field label="Edad:" v-model="edad" suffix="años"></v-text-field>
       <v-radio-group v-model="sexo" label="Sexo:">
         <v-radio label="Masculino" value="M"></v-radio>
@@ -54,7 +53,6 @@
           Triage
         </v-btn>
       </div>
-    </v-form>
   </v-container>
 </template>
 

@@ -18,21 +18,25 @@ const routes = [
   {
     path: "/vitals",
     name: "vitals",
+    meta: {title: 'Signos Vitales'},
     component: () => import(/* webpackChunkName: "Vitals" */ "../views/Vitals"),
   },
   {
     path: "/traige",
     name: "triage",
+    meta: {title: 'Triage'},
     component: () => import(/* webpackChunkName: "Triage" */ "../views/Triage"),
   },
   {
     path: "/laboratorios",
     name: "laboratorios",
+    meta: {title: 'Laboratorios'},
     component: () => import(/* webpackChunkName: "Laboratorios" */ "../views/Laboratorios"),
   },
   {
     path: "/notas-medica",
     name: "notas",
+    meta: {title: 'Notas Medicas'},
     component: () => import(/* webpackChunkName: "Notes" */ "../views/Notes"),
   },
   {
