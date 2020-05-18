@@ -16,6 +16,13 @@
     </v-expansion-panels>
     <div class="spacer"></div>
     <div class="d-flex justify-center">
+      <v-btn color="primary" x-large rounded :to="{ name: 'notas' }">
+        <v-icon left large dark>mdi-chevron-right</v-icon>
+        Añadir Notas Medicas
+      </v-btn>
+    </div>
+    <div class="spacer"></div>
+    <div class="d-flex justify-center">
       <v-btn color="primary" x-large rounded :to="{ name: 'home' }">
         <v-icon left large dark>mdi-chevron-right</v-icon>
         Calcular probabilidad rcp
