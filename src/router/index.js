@@ -12,12 +12,35 @@ const routes = [
   {
     path: "/medical-record",
     name: "medicalRecord",
+    meta: {title: 'Expediente'},
     component: () => import(/* webpackChunkName: "MedicalRecord" */ "../views/MedicalRecord"),
   },
   {
-    path: "/operation",
-    name: "operation",
-    component: () => import(/* webpackChunkName: "Operation" */ "../views/Operation"),
+    path: "/vitals",
+    name: "vitals",
+    component: () => import(/* webpackChunkName: "Vitals" */ "../views/Vitals"),
+  },
+  {
+    path: "/traige",
+    name: "triage",
+    component: () => import(/* webpackChunkName: "Triage" */ "../views/Triage"),
+  },
+  {
+    path: "/laboratorios",
+    name: "laboratorios",
+    component: () => import(/* webpackChunkName: "Laboratorios" */ "../views/Laboratorios"),
+  },
+  {
+    path: "/notas-medica",
+    name: "notas",
+    component: () => import(/* webpackChunkName: "Notes" */ "../views/Notes"),
+  },
+  {
+    path: "/404",
+    alias: "*",
+    name: "notFound",
+    component: () =>
+      import(/* webpackChunkName: "NotFound" */ "../views/NotFound"),
   },
 ];
 
