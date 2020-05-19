@@ -25,6 +25,7 @@
     "@vue/cli-service": "~4.3.0",
     "copy-webpack-plugin": "^6.0.1",
     "core-js": "^3.6.5",
+    "move-file": "1.2.0",
     "postcss-loader": "^3.0.0",
     "regenerator-runtime": "^0.13.5",
     "sass": "^1.19.0",
