@@ -49,21 +49,25 @@ export default {
               name: "Hematocrito",
               units: "%",
               value: 32,
+              type: 'text'
             },
             {
               name: "Hemoglobina",
               units: "gr/dL",
               value: 50,
+              type: 'text'
             },
             {
               name: "Leucocitos",
               units: "cels./uL",
               value: 45,
+              type: 'text'
             },
             {
               name: "Plaquetas",
               units: "cels./uL",
               value: 30,
+              type: 'text'
             },
           ],
         },
@@ -74,31 +78,37 @@ export default {
               name: "Glucosa",
               units: "mg/dL",
               value: null,
+              type: 'text'
             },
             {
               name: "Urea",
               units: "mg/dL",
               value: null,
+              type: 'text'
             },
             {
               name: "Creatina",
               units: "mg/dL",
               value: null,
+              type: 'text'
             },
             {
               name: "Colesterol",
               units: "mg/dL",
               value: null,
+              type: 'text'
             },
             {
               name: "Trigliceridos",
               units: "mg/dL",
               value: null,
+              type: 'text'
             },
             {
               name: "Hemoglobina Glicida",
               units: "%",
               value: null,
+              type: 'text'
             },
           ],
         },
@@ -109,11 +119,13 @@ export default {
               name: "Sodio",
               units: "mEq/L",
               value: null,
+              type: 'text'
             },
             {
               name: "Potasio",
               units: "mEq/L",
               value: null,
+              type: 'text'
             },
           ],
         },
@@ -124,16 +136,19 @@ export default {
               name: "Aspartato Aminotransferasa",
               units: "U/L",
               value: null,
+              type: 'text'
             },
             {
               name: "Alanina Aminotransferasa",
               units: "U/L",
               value: null,
+              type: 'text'
             },
             {
               name: "BUN Serico (Nitrogeno Ureico)",
               units: "mg/dL",
               value: null,
+              type: 'text'
             },
           ],
         },
@@ -144,11 +159,13 @@ export default {
               name: "Protrombina (TP)",
               units: "segs.",
               value: null,
+              type: 'text'
             },
             {
               name: "Tromboplastina (TPT)",
               units: "segs.",
               value: null,
+              type: 'text'
             },
           ],
         },
@@ -159,6 +176,32 @@ export default {
               name: "Proteina C Reactiva",
               units: "Mg/dL",
               value: null,
+              type: 'text'
+            },
+          ],
+        },
+        {
+          title: "Imagenologia",
+          meta: [
+            {
+              name: "Radiografia de Torax",
+              value: null,
+              type: 'boolean'
+            },
+            {
+              name: "Resultado",
+              value: null,
+              type: 'select',
+              options: [
+                'Normal',
+                'Infiltrado',
+                'Focos neumónicos Apicales',
+                'Focos neumónicos Basales',
+                'Focos neumónicos Bilateral',
+                'Focos neumónicos Generalizados',
+                'Focos neumónicos Mediales',
+                'Focos neumónicos Unilateral'
+              ]
             },
           ],
         },
