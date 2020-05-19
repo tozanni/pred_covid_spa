@@ -10,6 +10,18 @@ const routes = [
     component: () => import("../views/Home"),
   },
   {
+    path: "/login",
+    name: "login",
+    meta: {title: 'Login'},
+    component: () => import(/* webpackChunkName: "Login" */ "../views/Login"),
+  },
+  {
+    path: "/registration",
+    name: "registration",
+    meta: {title: 'Registration'},
+    component: () => import(/* webpackChunkName: "Registration" */ "../views/Registration"),
+  },
+  {
     path: "/medical-record",
     name: "medicalRecord",
     meta: {title: 'Expediente'},

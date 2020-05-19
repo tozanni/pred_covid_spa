@@ -12,12 +12,12 @@
       <p>
         Inicia sesion con una cuenta para llevar un historial de los pacientes
       </p>
-      <v-btn color="primary" x-large rounded>
+      <v-btn :to="{name: 'login'}" color="primary" x-large rounded>
         iniciar sesion
       </v-btn>
       <br />
       <br />
-      <v-btn color="primary" x-large text>
+      <v-btn :to="{name: 'registration'}" color="primary" x-large text>
         registrarme
       </v-btn>
     </div>
