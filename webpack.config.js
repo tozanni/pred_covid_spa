@@ -58,9 +58,9 @@ Encore
     .enablePostCssLoader()
     .enableVueLoader(() => {}, { runtimeCompilerBuild: true })
 
-    .addPlugin(new CopyWebpackPlugin({patterns: [
-            { from: 'src/assets/static', to: 'static' }
-    ]}))
+    .addPlugin(new CopyWebpackPlugin( [
+        { from: 'src/assets/static', to: 'static' }
+    ]))
     .addPlugin(new VuetifyLoaderPlugin())
 ;
 module.exports = Encore.getWebpackConfig();
