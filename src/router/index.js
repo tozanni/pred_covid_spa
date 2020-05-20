@@ -1,13 +1,39 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import Home from "../views/Home.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("../views/Home"),
+    component: Home,
+  },
+  {
+    path: "/login",
+    name: "login",
+    meta: {title: 'Iniciar sesion'},
+    component: () => import(/* webpackChunkName: "Login" */ "../views/Login"),
+  },
+  {
+    path: "/registration",
+    name: "registration",
+    meta: {title: 'Registro'},
+    component: () => import(/* webpackChunkName: "Registration" */ "../views/Registration"),
+  },
+  {
+    path: "/about",
+    name: "about",
+    meta: {title: 'Proyecto'},
+    component: () => import(/* webpackChunkName: "About" */ "../views/About"),
+  },
+  {
+    path: "/contact",
+    name: "contact",
+    meta: {title: 'Contacto'},
+    component: () => import(/* webpackChunkName: "Contact" */ "../views/Contact"),
   },
   {
     path: "/medical-record",

@@ -34,6 +34,8 @@ export default {
     Probability,
     CardLink
   },
+  data: () => ({
+  })
 };
 </script>
 

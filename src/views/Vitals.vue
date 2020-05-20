@@ -5,8 +5,8 @@
         <v-radio label="Masculino" value="M"></v-radio>
         <v-radio label="Femenino" value="F"></v-radio>
       </v-radio-group>
-      <v-text-field label="Peso:" v-model="edad" suffix="kg"></v-text-field>
-      <v-text-field label="Estatura:" v-model="edad" suffix="cm"></v-text-field>
+      <v-text-field label="Peso:" v-model="peso" suffix="kg"></v-text-field>
+      <v-text-field label="Estatura:" v-model="estatura" suffix="cm"></v-text-field>
       <p class="text-center">
         <Span class="font-weight-bold">IMC</Span>
         <span class="amber--text text--darken-3">Sobrepeso</span>
