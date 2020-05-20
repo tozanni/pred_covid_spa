@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Home from "../views/Home.vue";
+import Home from "../views/Home";
 
 Vue.use(VueRouter);
 
@@ -40,6 +40,12 @@ const routes = [
     name: "medicalRecord",
     meta: {title: 'Expediente'},
     component: () => import(/* webpackChunkName: "MedicalRecord" */ "../views/MedicalRecord"),
+  },
+  {
+    path: "/medical-records-list",
+    name: "medicalRecords",
+    meta: {title: 'Listado de Pacientes'},
+    component: () => import(/* webpackChunkName: "MedicalRecords" */ "../views/MedicalRecordList"),
   },
   {
     path: "/vitals",

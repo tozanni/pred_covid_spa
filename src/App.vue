@@ -12,23 +12,19 @@
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
-      <NavigationList />
+      <NavigationList/>
       <template v-slot:append>
         <div class="pa-2">
-          <v-btn color="light-blue darken-4 white--text" block
-            ><v-icon left>mdi-exit-to-app</v-icon> cerrar sesion</v-btn
-          >
+          <v-btn color="light-blue darken-4 white--text" block>
+            <v-icon left>mdi-exit-to-app</v-icon> Cerrar Sesión</v-btn>
         </div>
       </template>
     </v-navigation-drawer>
     <v-app-bar app clipped-right color="primary" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-
       <v-toolbar-title>{{ $route.meta.title }}</v-toolbar-title>
-
       <v-spacer></v-spacer>
     </v-app-bar>
-
     <v-content>
       <v-container fluid>
         <router-view :key="$route.path" />
