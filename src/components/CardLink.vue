@@ -1,5 +1,5 @@
 <template>
-  <v-card :to="to">
+  <v-card class="mb-5" :to="to">
     <v-card-title>{{ title }}</v-card-title>
     <v-card-subtitle :class="completed?'':'teal--text'">{{ subtitle }}</v-card-subtitle>
     <v-icon large color="teal" class="action">mdi-arrow-right</v-icon>
