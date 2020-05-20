@@ -12,32 +12,7 @@
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
-      <v-list dense>
-        <v-list-item to="/" link>
-          <v-list-item-action>
-            <v-icon>mdi-home-outline</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Inicio</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item :to="{ name: 'about' }" link>
-          <v-list-item-action>
-            <v-icon>mdi-information-outline</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Proyecto</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item :to="{ name: 'contact' }" link>
-          <v-list-item-action>
-            <v-icon>mdi-card-account-mail-outline</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Contacto</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+      <NavigationList />
       <template v-slot:append>
         <div class="pa-2">
           <v-btn color="light-blue darken-4 white--text" block
@@ -63,19 +38,16 @@
 </template>
 
 <script>
-import Navigation from "./components/Navigation";
+import NavigationList from './components/NavigationList'
 
 export default {
   name: "App",
-
   components: {
-    Navigation,
+    NavigationList
   },
-  data() {
-    return {
+  data: () => ({
       drawer: null
-    };
-  },
+  }),
 };
 </script>
 
