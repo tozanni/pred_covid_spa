@@ -18,10 +18,10 @@
         </p>
       </v-col>
     </v-row>
-    <CardLink class="mb-5" title="Signos Vitales" subtitle="Completado hace 2 dias" :to="{name: 'vitals'}"/>
-    <CardLink class="mb-5" title="Triage" subtitle="Completado hace 2 dias" :to="{name: 'triage'}"/>
-    <CardLink class="mb-5" title="Laboratorios" subtitle="Completado hace 2 dias" :to="{name: 'laboratorios'}"/>
-    <CardLink class="mb-5" title="Notas Medicas" subtitle="Incompleto" :completed="false" :to="{name: 'notas'}"/>
+    <CardLink title="Signos Vitales" subtitle="Completado hace 2 dias" :to="{name: 'vitals'}"/>
+    <CardLink title="Triage" subtitle="Completado hace 2 dias" :to="{name: 'triage'}"/>
+    <CardLink title="Laboratorios" subtitle="Completado hace 2 dias" :to="{name: 'laboratorios'}"/>
+    <CardLink title="Notas Medicas" subtitle="Incompleto" :completed="false" :to="{name: 'notas'}"/>
   </div>
 </template>
 
@@ -38,6 +38,3 @@ export default {
   })
 };
 </script>
-
-<style scoped>
-</style>
