@@ -49,11 +49,11 @@
 
 <script>
 export default {
-    props: {
-        drawer: {
-            required: true
-        }
-    }
+  data() {
+    return {
+      drawer: null,
+    };
+  },
 };
 </script>
 
