@@ -10,6 +10,7 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
+    meta: {title: 'Probabilidad RCP'},
   },
   {
     path: "/login",
@@ -70,6 +71,12 @@ const routes = [
     name: "notas",
     meta: {title: 'Notas Medicas'},
     component: () => import(/* webpackChunkName: "Notes" */ "../views/Notes"),
+  },
+  {
+    path: "/non-suspicious",
+    name: "non-suspicious",
+    meta: {title: 'No Sospoechoso'},
+    component: () => import(/* webpackChunkName: "NonSuspicious" */ "../views/NonSuspicious"),
   },
   {
     path: "/404",

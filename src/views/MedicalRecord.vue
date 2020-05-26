@@ -1,5 +1,5 @@
 <template>
-  <div class="div">
+  <v-container>
     <v-row align="center" justify="center">
       <v-col xs="12" sm="6" cols="12">
         <Probability />
@@ -22,7 +22,7 @@
     <CardLink title="Triage" subtitle="Completado hace 2 dias" :to="{name: 'triage'}"/>
     <CardLink title="Laboratorios" subtitle="Completado hace 2 dias" :to="{name: 'laboratorios'}"/>
     <CardLink title="Notas Medicas" subtitle="Incompleto" :completed="false" :to="{name: 'notas'}"/>
-  </div>
+  </v-container>
 </template>
 
 <script>

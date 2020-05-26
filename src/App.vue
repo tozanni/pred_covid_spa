@@ -26,9 +26,7 @@
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-content>
-      <v-container fluid>
         <router-view :key="$route.path" />
-      </v-container>
     </v-content>
   </v-app>
 </template>
