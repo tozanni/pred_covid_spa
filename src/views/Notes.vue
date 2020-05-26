@@ -17,7 +17,7 @@
 
     <div class="spacer"></div>
     <div class="d-flex justify-center">
-      <v-btn color="primary" x-large rounded :to="{ name: 'home' }">
+      <v-btn color="primary" x-large rounded :to="{ name: 'probability' }">
         <v-icon left large dark>mdi-chevron-right</v-icon>
         Calcular probabilidad rcp
       </v-btn>

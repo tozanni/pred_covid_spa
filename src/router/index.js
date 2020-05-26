@@ -73,9 +73,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "Notes" */ "../views/Notes"),
   },
   {
+    path: "/probability",
+    name: "probability",
+    meta: {title: 'Probabilidad RCP'},
+    component: () => import(/* webpackChunkName: "Probability" */ "../views/Probability"),
+  },
+  {
     path: "/non-suspicious",
     name: "non-suspicious",
-    meta: {title: 'No Sospoechoso'},
+    meta: {title: 'No Sospechoso'},
     component: () => import(/* webpackChunkName: "NonSuspicious" */ "../views/NonSuspicious"),
   },
   {
