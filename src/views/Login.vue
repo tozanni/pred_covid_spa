@@ -1,4 +1,5 @@
 <template>
+<v-container>
   <v-form>
     <v-text-field label="Correo" outlined readonly></v-text-field>
     <v-text-field label="Contraseña" outlined readonly></v-text-field>
@@ -11,6 +12,7 @@
       registrarme
     </v-btn>
   </v-form>
+</v-container>
 </template>
 
 <script>

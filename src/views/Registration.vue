@@ -1,19 +1,21 @@
 <template>
-  <v-form>
-    <v-text-field label="Hospital" outlined></v-text-field>
-    <v-select label="Estado" :items="states" outlined></v-select>
-    <v-text-field label="Correo" outlined></v-text-field>
-    <v-text-field label="Contraseña" outlined></v-text-field>
-    <v-text-field label="Confirmar contraseña" outlined></v-text-field>
-    <v-btn :to="{ name: 'home' }" color="primary" x-large rounded>
-      iniciar sesion
-    </v-btn>
-    <br />
-    <br />
-    <v-btn color="primary" x-large text>
-      registrarme
-    </v-btn>
-  </v-form>
+  <v-container>
+    <v-form>
+      <v-text-field label="Hospital" outlined></v-text-field>
+      <v-select label="Estado" :items="states" outlined></v-select>
+      <v-text-field label="Correo" outlined></v-text-field>
+      <v-text-field label="Contraseña" outlined></v-text-field>
+      <v-text-field label="Confirmar contraseña" outlined></v-text-field>
+      <v-btn :to="{ name: 'home' }" color="primary" x-large rounded>
+        iniciar sesion
+      </v-btn>
+      <br />
+      <br />
+      <v-btn color="primary" x-large text>
+        registrarme
+      </v-btn>
+    </v-form>
+  </v-container>
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 <template>
+<v-container>
   <v-form>
     <v-textarea
       solo
@@ -22,4 +23,5 @@
       </v-btn>
     </div>
   </v-form>
+</v-container>
 </template>

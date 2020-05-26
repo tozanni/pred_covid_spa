@@ -1,4 +1,5 @@
 <template>
+<v-container>
   <v-form>
     <v-text-field label="Nombre" solo></v-text-field>
     <v-select
@@ -14,6 +15,7 @@
       Enviar
     </v-btn>
   </v-form>
+</v-container>
 </template>
 
 <script>

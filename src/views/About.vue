@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <v-container>
     <p>
       Sobre el proyecto: En el Tec de Monterrey queremos desarrollar una
       aplicación de “machine learning” que ayude a determinar la probabilidad de
@@ -29,5 +29,5 @@
     <h3>Front-End</h3>
     <h3>Back-End</h3>
     <h3>Traducciones</h3>
-  </div>
+  </v-container>
 </template>

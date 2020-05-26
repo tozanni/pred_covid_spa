@@ -1,4 +1,5 @@
 <template>
+<v-container>
   <v-form>
     <p class="teal--text text-center">
       LLENE LA MAYOR CANTIDAD DE LABORATORIOS PARA MAYOR PRECISIÓN EN LAS
@@ -29,6 +30,7 @@
       </v-btn>
     </div>
   </v-form>
+</v-container>
 </template>
 
 <script>
