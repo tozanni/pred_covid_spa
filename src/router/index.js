@@ -5,7 +5,6 @@ import VueRouter from "vue-router";
 import routes from "../common/routes";
 
 Vue.use(VueRouter);
-console.log(`env: ${process.env.BASE_URL}`);
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
