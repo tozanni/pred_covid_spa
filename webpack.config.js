@@ -1,7 +1,7 @@
-let Encore = require('@symfony/webpack-encore');
+const Encore = require('@symfony/webpack-encore');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
-
+const dotEnv = require('dotenv-webpack');
 Encore
     // directory where compiled assets will be stored
     .setOutputPath('public/build/')
@@ -62,5 +62,6 @@ Encore
         { from: 'src/assets/static', to: 'static' }
     ]))
     .addPlugin(new VuetifyLoaderPlugin())
+    .addPlugin(new dotEnv())
 ;
 module.exports = Encore.getWebpackConfig();
