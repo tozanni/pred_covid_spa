@@ -8,6 +8,14 @@
         <v-list-item-title>Inicio</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
+    <v-list-item :to="{name: 'records'}" link>
+      <v-list-item-action>
+        <v-icon>mdi-format-list-bulleted</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Expedientes</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
     <v-list-item :to="{ name: 'about' }" link>
       <v-list-item-action>
         <v-icon>mdi-information-outline</v-icon>
