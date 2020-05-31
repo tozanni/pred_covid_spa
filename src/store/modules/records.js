@@ -1,4 +1,6 @@
-import HTTP from "@/http-common";
+import HTTP from "../../http-common";
+
+import axios from "axios";
 
 const records = {
   namespaced: true,
@@ -12,11 +14,11 @@ const records = {
   },
   actions: {
     loadRecords({ commit }) {
-      HTTP.get("records")
+      HTTP.get("records.json")
         .then((res) => {
           commit("SET_RECORDS", res.data);
         })
-        .error((error) => console.log(error));
+        .catch((error) => console.log(error));
     },
   },
 };
