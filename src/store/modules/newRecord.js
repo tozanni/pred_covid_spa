@@ -31,6 +31,14 @@ const categories = {
             "chest_pain": true,
             "headache": 0,
             "cough": 2,
+            "other_symptoms": [
+                "conjunctivitis", "articulations_pain", "diarrhea",
+                "muscle_pain", "sore_throat", "shaking_chills"
+            ],
+            "comorbidities": [
+                "anemia", "coronary_atherosclerosis", "cancer", "cardiovascular",
+                "diabetes", "gestational_diabetes"
+            ],
             "smoker": true,
             "pregnant": true,
             "created_at": "2020-06-26T06:40:35.543Z",
