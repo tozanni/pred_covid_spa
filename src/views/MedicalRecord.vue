@@ -1,27 +1,96 @@
 <template>
   <div class="div">
-    <v-row align="center" justify="center">
+    <ValidationObserver v-if="showForm && persisted === false" v-slot="{ invalid }">
+      <v-form @submit.prevent>
+        <h2>Crear Nuevo Expediente</h2>
+        <span>Captura la fecha de ingreso para agregar un nuevo registro</span>
+        <v-menu
+          ref="menu"
+          v-model="menu"
+          :close-on-content-click="false"
+          :return-value.sync="form.admission_date"
+          transition="scale-transition"
+          offset-y
+          min-width="290px"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <ValidationProvider
+              name="required"
+              :rules="{required: true}"
+              v-slot="{ errors, valid }"
+            >
+              <v-text-field
+                v-model="form.admission_date"
+                label="Fecha de ingreso"
+                prepend-icon="mdi-calendar"
+                readonly
+                v-bind="attrs"
+                v-on="on"
+                :error="errors.length > 0"
+                :success="valid"
+                :error-messages="errors"
+              ></v-text-field>
+            </ValidationProvider>
+          </template>
+          <v-date-picker v-model="form.admission_date" no-title scrollable>
+            <v-spacer></v-spacer>
+            <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
+            <v-btn text color="primary" @click="$refs.menu.save(form.admission_date)">OK</v-btn>
+          </v-date-picker>
+        </v-menu>
+        <v-text-field label="Estado:" v-model="form.status" placeholder="Cuidados intensivos"></v-text-field>
+        <div class="d-flex justify-center">
+          <v-btn color="primary" @click="createRecord(form)" :disabled="invalid">
+            <v-icon left large dark>mdi-plus</v-icon>Nuevo Registro
+          </v-btn>
+        </div>
+        <div class="spacer"></div>
+      </v-form>
+    </ValidationObserver>
+    <v-row v-else align="center" justify="center">
       <v-col xs="12" sm="6" cols="12">
         <Probability />
       </v-col>
       <v-col xs="12" sm="6" cols="12">
         <p>
           <span class="font-weight-bold">Estado:</span>
-          <span class="amber--text text--darken-3">Cuidados intensivos</span>
-          <v-btn icon color="teal">
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn>
-        </p>
-        <p>
-          <span class="font-weight-bold">Edad:</span> 54 años<br />
-          <span class="font-weight-bold">Sexo:</span> Masculino
+          {{ record.status }}
+          <br />
+          <span class="font-weight-bold">Edad:</span>
+          {{ record.vital_signs.age }}
+          <br />
+          <span class="font-weight-bold">Sexo:</span>
+          {{ record.vital_signs.gender == "name" ? "Masculino" : "Femenino" }}
         </p>
       </v-col>
     </v-row>
-    <CardLink title="Signos Vitales" subtitle="Completado hace 2 dias" :to="{name: 'vitals'}"/>
-    <CardLink title="Triage" subtitle="Completado hace 2 dias" :to="{name: 'triage'}"/>
-    <CardLink title="Laboratorios" subtitle="Completado hace 2 dias" :to="{name: 'laboratorios'}"/>
-    <CardLink title="Notas Medicas" subtitle="Incompleto" :completed="false" :to="{name: 'notas'}"/>
+    <template v-if="persisted">
+      <CardLink
+        title="Signos Vitales"
+        subtitle="Completado hace 2 dias"
+        :to="{name: 'vitals'}"
+        :disabled="showForm"
+      />
+      <CardLink
+        title="Triage"
+        subtitle="Completado hace 2 dias"
+        :to="{name: 'triage'}"
+        :disabled="showForm"
+      />
+      <CardLink
+        title="Laboratorios"
+        subtitle="Completado hace 2 dias"
+        :to="{name: 'laboratorios'}"
+        :disabled="showForm"
+      />
+      <CardLink
+        title="Notas Medicas"
+        subtitle="Incompleto"
+        :completed="false"
+        :to="{name: 'notas'}"
+        :disabled="showForm"
+      />
+    </template>
   </div>
 </template>
 
@@ -29,12 +98,44 @@
 import Probability from "../components/Probability.vue";
 import CardLink from "../components/CardLink.vue";
 
+import { ValidationProvider, ValidationObserver } from "vee-validate";
+import "../common/validation-rules";
+
+import { mapState, mapActions } from "vuex";
+
 export default {
+  computed: {
+    ...mapState("record", ["record", "persisted"])
+  },
   components: {
     Probability,
-    CardLink
+    CardLink,
+    ValidationProvider,
+    ValidationObserver
   },
-  data: () => ({
-  })
+  props: {
+    uuid: {
+      required: false,
+      type: String
+    }
+  },
+  data() {
+    return {
+      showForm: false,
+      menu: false,
+      form: {
+        status: "",
+        admission_date: null
+      }
+    };
+  },
+  methods: {
+    ...mapActions("record", ["createRecord"])
+  },
+  created() {
+    if (this.uuid === undefined) {
+      this.showForm = true;
+    }
+  }
 };
 </script>

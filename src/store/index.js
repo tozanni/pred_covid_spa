@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import newRecord from "./modules/newRecord";
+import record from "./modules/record";
 
 Vue.use(Vuex)
 
@@ -13,6 +13,6 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    newRecord
+    record
   }
 })

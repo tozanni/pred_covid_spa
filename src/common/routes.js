@@ -30,8 +30,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "Contact" */ "../views/Contact"),
   },
   {
-    path: "/medical-record",
+    path: "/medical-record/:uuid?",
     name: "medicalRecord",
+    props: true,
     meta: {title: 'Expediente'},
     component: () => import(/* webpackChunkName: "MedicalRecord" */ "../views/MedicalRecord"),
   },
