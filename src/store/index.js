@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate";
 
 import record from "./modules/record";
 
@@ -14,5 +15,6 @@ export default new Vuex.Store({
   },
   modules: {
     record
-  }
+  },
+  plugins: [createPersistedState()],
 })

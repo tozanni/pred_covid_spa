@@ -8,7 +8,7 @@
           ref="menu"
           v-model="menu"
           :close-on-content-click="false"
-          :return-value.sync="form.admission_date"
+          :return-value.sync="date"
           transition="scale-transition"
           offset-y
           min-width="290px"
@@ -20,7 +20,7 @@
               v-slot="{ errors, valid }"
             >
               <v-text-field
-                v-model="form.admission_date"
+                v-model="date"
                 label="Fecha de ingreso"
                 prepend-icon="mdi-calendar"
                 readonly
@@ -32,15 +32,15 @@
               ></v-text-field>
             </ValidationProvider>
           </template>
-          <v-date-picker v-model="form.admission_date" no-title scrollable>
+          <v-date-picker v-model="date" no-title scrollable>
             <v-spacer></v-spacer>
-            <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
-            <v-btn text color="primary" @click="$refs.menu.save(form.admission_date)">OK</v-btn>
+            <v-btn text color="primary" @click="menu = false">Cancelar</v-btn>
+            <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
           </v-date-picker>
         </v-menu>
-        <v-text-field label="Estado:" v-model="form.status" placeholder="Cuidados intensivos"></v-text-field>
+        <v-text-field label="Estado:" v-model="status" placeholder="Cuidados intensivos"></v-text-field>
         <div class="d-flex justify-center">
-          <v-btn color="primary" @click="createRecord(form)" :disabled="invalid">
+          <v-btn color="primary" @click="submitRecord()" :disabled="invalid">
             <v-icon left large dark>mdi-plus</v-icon>Nuevo Registro
           </v-btn>
         </div>
@@ -55,12 +55,12 @@
         <p>
           <span class="font-weight-bold">Estado:</span>
           {{ record.status }}
-          <br />
+          <!-- <br />
           <span class="font-weight-bold">Edad:</span>
           {{ record.vital_signs.age }}
           <br />
           <span class="font-weight-bold">Sexo:</span>
-          {{ record.vital_signs.gender == "name" ? "Masculino" : "Femenino" }}
+          {{ record.vital_signs.gender == "name" ? "Masculino" : "Femenino" }} -->
         </p>
       </v-col>
     </v-row>
@@ -97,7 +97,7 @@
 <script>
 import Probability from "../components/Probability.vue";
 import CardLink from "../components/CardLink.vue";
-
+import moment from "moment/moment";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import "../common/validation-rules";
 
@@ -105,6 +105,9 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   computed: {
+    dateFormatted() {
+      return this.date ? moment(this.date).format("YYYY-MM-DD HH:mm:ss") : "";
+    },
     ...mapState("record", ["record", "persisted"])
   },
   components: {
@@ -123,13 +126,15 @@ export default {
     return {
       showForm: false,
       menu: false,
-      form: {
-        status: "",
-        admission_date: null
-      }
+      status: "",
+      date: new Date().toISOString().substr(0, 10)
     };
   },
   methods: {
+    submitRecord() {
+      this.createRecord({ admission_date: this.dateFormatted, status: this.status });
+      this.$router.push({ name: 'medicalRecord', params: { uuid: '733ca3c0-8a56-46de-a4e4-3095b57347b3' }})
+    },
     ...mapActions("record", ["createRecord"])
   },
   created() {
