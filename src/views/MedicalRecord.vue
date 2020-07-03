@@ -38,7 +38,7 @@
             <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
           </v-date-picker>
         </v-menu>
-        <v-text-field label="Estado:" v-model="status" placeholder="Cuidados intensivos"></v-text-field>
+        <v-text-field label="Estado:" v-model="status" placeholder="Ej. Cuidados intensivos"></v-text-field>
         <div class="d-flex justify-center">
           <v-btn color="primary" @click="submitRecord()" :disabled="invalid">
             <v-icon left large dark>mdi-plus</v-icon>Nuevo Registro
@@ -49,48 +49,48 @@
     </ValidationObserver>
     <v-row v-else align="center" justify="center">
       <v-col xs="12" sm="6" cols="12">
-        <Probability />
+        <Probability :record="record" />
       </v-col>
       <v-col xs="12" sm="6" cols="12">
-        <p>
-          <span class="font-weight-bold">Estado:</span>
-          {{ record.status }}
-          <!-- <br />
+        <span class="font-weight-bold">Estado:</span>
+        {{ record.status }}
+        <p v-if="record.vital_signs">
           <span class="font-weight-bold">Edad:</span>
           {{ record.vital_signs.age }}
           <br />
           <span class="font-weight-bold">Sexo:</span>
-          {{ record.vital_signs.gender == "name" ? "Masculino" : "Femenino" }} -->
+          {{ record.vital_signs.gender == "name" ? "Masculino" : "Femenino" }}
         </p>
       </v-col>
     </v-row>
-    <template v-if="persisted">
+    <template v-if="persisted && $route.name === 'medicalRecord'">
       <CardLink
         title="Signos Vitales"
         subtitle="Completado hace 2 dias"
-        :to="{name: 'vitals'}"
+        :to="{name: 'vitals', params: {uuid}}"
         :disabled="showForm"
       />
       <CardLink
         title="Triage"
         subtitle="Completado hace 2 dias"
-        :to="{name: 'triage'}"
-        :disabled="showForm"
+        :to="{name: 'triage', params: {uuid}}"
+        :disabled="!record.vital_signs"
       />
       <CardLink
         title="Laboratorios"
         subtitle="Completado hace 2 dias"
-        :to="{name: 'laboratorios'}"
-        :disabled="showForm"
+        :to="{name: 'laboratorios', params: {uuid}}"
+        :disabled="!record.vital_signs"
       />
-      <CardLink
+      <CardLink 
         title="Notas Medicas"
         subtitle="Incompleto"
         :completed="false"
-        :to="{name: 'notas'}"
-        :disabled="showForm"
+        :to="{name: 'notas', params: {uuid}}"
+        :disabled="!record.vital_signs"
       />
     </template>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -100,7 +100,7 @@ import CardLink from "../components/CardLink.vue";
 import moment from "moment/moment";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import "../common/validation-rules";
-
+import { HTTP } from "../http-common";
 import { mapState, mapActions } from "vuex";
 
 export default {
@@ -132,14 +132,27 @@ export default {
   },
   methods: {
     submitRecord() {
-      this.createRecord({ admission_date: this.dateFormatted, status: this.status });
-      this.$router.push({ name: 'medicalRecord', params: { uuid: '733ca3c0-8a56-46de-a4e4-3095b57347b3' }})
+      HTTP.post("records", {
+        admission_date: this.dateFormatted,
+        status: this.status
+      })
+        .then(res => {
+          this.setRecord(res.data);
+          this.$router.push({
+            name: "medicalRecord",
+            params: { uuid: this.record.id }
+          });
+        })
+        .catch(error => console.error(error));
     },
-    ...mapActions("record", ["createRecord"])
+    ...mapActions("record", ["setRecord", "clearRecord", "fetchRecord"])
   },
   created() {
     if (this.uuid === undefined) {
       this.showForm = true;
+      this.clearRecord();
+    } else {
+      this.fetchRecord(this.uuid);
     }
   }
 };

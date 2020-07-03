@@ -1,4 +1,4 @@
-import { HTTP }  from "../../http-common";
+import { HTTP } from "../../http-common";
 
 const record = {
     namespaced: true,
@@ -18,23 +18,25 @@ const record = {
         FETCH_RECORD(state) {
             state.persisted = true
         },
+        CLEAR_RECORD(state) {
+            state.record = null,
+                state.persisted = false
+        },
     },
     actions: {
-        createRecord({ commit }, record) {
-            HTTP.post("records", record)
-                .then(res => {
-                    console.log(res);
-                    commit("SET_RECORD", res.data);
-                })
-                .catch(error => console.error(error));
+        setRecord({ commit }, record) {
+            commit("SET_RECORD", record);
+        },
+        clearRecord({ commit }) {
+            commit('CLEAR_RECORD');
         },
         updateRecord({ commit }, record) {
-            commit('setRecord', record);
+            commit('UPDATE_RECORD', record);
         },
         fetchRecord({ commit }, uuid) {
             HTTP.get(`records/${uuid}`)
                 .then(res => {
-                    commit("SET_RECORD", res.data.data);
+                    commit("SET_RECORD", res.data);
                 })
                 .catch(error => console.error(error));
         },
