@@ -42,6 +42,12 @@ const routes = [
         meta: { title: 'Signos Vitales' },
         component: () => import(/* webpackChunkName: "Vitals" */ "../views/Vitals"),
       },
+      {
+        path: "traige",
+        name: "triage",
+        meta: { title: 'Triage' },
+        component: () => import(/* webpackChunkName: "Triage" */ "../views/Triage"),
+      },
     ]
   },
   {
@@ -49,12 +55,6 @@ const routes = [
     name: "medicalRecords",
     meta: { title: 'Listado de Pacientes' },
     component: () => import(/* webpackChunkName: "MedicalRecords" */ "../views/MedicalRecordList"),
-  },
-  {
-    path: "/traige",
-    name: "triage",
-    meta: { title: 'Triage' },
-    component: () => import(/* webpackChunkName: "Triage" */ "../views/Triage"),
   },
   {
     path: "/laboratorios",

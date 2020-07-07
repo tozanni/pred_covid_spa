@@ -13,6 +13,7 @@ const record = {
         },
         UPDATE_RECORD(state, payload) {
             state.record = { ...state.record, ...payload };
+            console.log({ ...state.record, ...payload });
             state.persisted = true
         },
         FETCH_RECORD(state) {

@@ -76,19 +76,6 @@
         :to="{name: 'triage', params: {uuid}}"
         :disabled="!record.vital_signs"
       />
-      <CardLink
-        title="Laboratorios"
-        subtitle="Completado hace 2 dias"
-        :to="{name: 'laboratorios', params: {uuid}}"
-        :disabled="!record.vital_signs"
-      />
-      <CardLink 
-        title="Notas Medicas"
-        subtitle="Incompleto"
-        :completed="false"
-        :to="{name: 'notas', params: {uuid}}"
-        :disabled="!record.vital_signs"
-      />
     </template>
     <router-view></router-view>
   </div>

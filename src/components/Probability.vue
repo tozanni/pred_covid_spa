@@ -28,6 +28,10 @@ export default {
   computed: {
     admissionFromNow() {
       moment.updateLocale('es');
+      const admissionDate = moment(this.record.admission_date);
+      if(moment().diff(admissionDate, 'hours') < 21) {
+        return "Hoy";
+      }
       return moment(this.record.admission_date).fromNow();
     }
   }

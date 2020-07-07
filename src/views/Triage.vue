@@ -50,9 +50,9 @@
       ></v-select>
       <div class="spacer"></div>
       <div class="d-flex justify-center">
-        <v-btn color="primary" x-large rounded :to="{ name: 'laboratorios' }">
+        <v-btn color="primary" x-large rounded>
           <v-icon left large dark>mdi-chevron-right</v-icon>
-          Laboratorios
+          Calcular Probabilidad RCP
         </v-btn>
       </div>
     </v-form>
