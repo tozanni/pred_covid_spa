@@ -1,15 +1,8 @@
 <template>
   <v-container fluid>
     <v-form>
-      <v-text-field
-        label="Dias enfermo antes de ingreso"
-        v-model="daysSick"
-        suffix="dias"
-      ></v-text-field>
-      <v-checkbox
-        v-model="shortnessOfBreath"
-        label="Dificultad para respirar"
-      ></v-checkbox>
+      <v-text-field label="Dias enfermo antes de ingreso" v-model="daysSick" suffix="dias"></v-text-field>
+      <v-checkbox v-model="shortnessOfBreath" label="Dificultad para respirar"></v-checkbox>
       <v-checkbox v-model="chestPain" label="Dolor Toracico"></v-checkbox>
 
       <div class="spacer"></div>
@@ -33,13 +26,7 @@
         ticks
       ></v-slider>
       <div class="spacer"></div>
-      <v-select
-        v-model="symptoms"
-        :items="symptomsList"
-        label="Otros sintomas:"
-        multiple
-        chips
-      ></v-select>
+      <v-select v-model="symptoms" :items="symptomsList" label="Otros sintomas:" multiple chips></v-select>
       <div class="spacer"></div>
       <v-select
         v-model="comorbidities"
@@ -51,8 +38,7 @@
       <div class="spacer"></div>
       <div class="d-flex justify-center">
         <v-btn color="primary" x-large rounded>
-          <v-icon left large dark>mdi-chevron-right</v-icon>
-          Calcular Probabilidad RCP
+          <v-icon left large dark>mdi-chevron-right</v-icon>Calcular Probabilidad RCP
         </v-btn>
       </div>
     </v-form>
@@ -105,8 +91,27 @@ export default {
         "Renal crónica",
         "Tratamiento inmunosupresor",
         "VIH"
-      ],
+      ]
     };
   },
+  methods: {
+    submitTriageSigns() {
+      this.updateRecord({ vital_signs: this.form });
+      HTTP.put(`records/${this.record.id}`, {
+        admission_date: this.record.admission_date,
+        status: this.record.status,
+        vital_signs: this.form
+      })
+        .then(res => {
+          this.setRecord(res.data);
+          this.$router.push({
+            name: "triage",
+            params: { uuid: this.record.id }
+          });
+        })
+        .catch(error => console.error(error));
+    },
+    ...mapActions("record", ["setRecord", "clearRecord", "updateRecord", "formatDates"])
+  }
 };
 </script>

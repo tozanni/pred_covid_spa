@@ -16,5 +16,5 @@ export default new Vuex.Store({
   modules: {
     record
   },
-  plugins: [createPersistedState()],
+  //plugins: [createPersistedState()],
 })

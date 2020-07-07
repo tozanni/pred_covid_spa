@@ -47,7 +47,7 @@
         <div class="spacer"></div>
       </v-form>
     </ValidationObserver>
-    <v-row v-else align="center" justify="center">
+    <v-row v-if="record" align="center" justify="center">
       <v-col xs="12" sm="6" cols="12">
         <Probability :record="record" />
       </v-col>
@@ -132,7 +132,7 @@ export default {
         })
         .catch(error => console.error(error));
     },
-    ...mapActions("record", ["setRecord", "clearRecord", "fetchRecord"])
+    ...mapActions("record", ["setRecord", "clearRecord", "fetchRecord", "formatDates"])
   },
   created() {
     if (this.uuid === undefined) {
