@@ -5,7 +5,8 @@ const record = {
     namespaced: true,
     state: {
         record: null,
-        persisted: false
+        persisted: false,
+        probability: null
     },
     computed: {
     },
@@ -13,6 +14,9 @@ const record = {
         SET_RECORD(state, record) {
             state.record = record;
             state.persisted = true;
+        },
+        SET_PROBABILITY(state, probability) {
+            state.probability = probability;
         },
         UPDATE_RECORD(state, payload) {
             state.record = { ...state.record, ...payload };
@@ -33,6 +37,9 @@ const record = {
         setRecord({ commit }, record) {
             commit("SET_RECORD", record);
             commit("APPLY_FORMAT");
+        },
+        setProbability({ commit }, probability) {
+            commit("SET_PROBABILITY", probability);
         },
         clearRecord({ commit }) {
             commit('CLEAR_RECORD');
