@@ -138,7 +138,7 @@ export default {
     if (this.uuid === undefined) {
       this.showForm = true;
       this.clearRecord();
-    } else {
+    } else if (this.record === null || this.uuid !== this.record.id) {
       this.fetchRecord(this.uuid);
     }
   }
