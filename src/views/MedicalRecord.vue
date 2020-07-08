@@ -47,9 +47,9 @@
         <div class="spacer"></div>
       </v-form>
     </ValidationObserver>
-    <v-row v-if="record" align="center" justify="center">
+    <v-row v-if="record" v-show="$route.name !== 'probability'"  align="center" justify="center">
       <v-col xs="12" sm="6" cols="12">
-        <Probability :record="record" />
+        <Probability :probability="probability" :admission-date="record.admission_date"/>
       </v-col>
       <v-col xs="12" sm="6" cols="12">
         <span class="font-weight-bold">Estado:</span>
@@ -95,7 +95,7 @@ export default {
     dateFormatted() {
       return this.date ? moment(this.date).format("YYYY-MM-DD HH:mm:ss") : "";
     },
-    ...mapState("record", ["record", "persisted"])
+    ...mapState("record", ["record", "persisted", "probability"])
   },
   components: {
     Probability,
@@ -125,6 +125,7 @@ export default {
       })
         .then(res => {
           this.setRecord(res.data);
+          this.setProbability(0);
           this.$router.push({
             name: "medicalRecord",
             params: { uuid: this.record.id }
@@ -132,14 +133,15 @@ export default {
         })
         .catch(error => console.error(error));
     },
-    ...mapActions("record", ["setRecord", "clearRecord", "fetchRecord", "formatDates"])
+    ...mapActions("record", ["setRecord", "clearRecord", "fetchRecord", "formatDates", "setProbability"])
   },
   created() {
     if (this.uuid === undefined) {
       this.showForm = true;
       this.clearRecord();
-    } else {
+    } else if (this.record === null || this.uuid !== this.record.id) {
       this.fetchRecord(this.uuid);
+      this.setProbability(0);
     }
   }
 };

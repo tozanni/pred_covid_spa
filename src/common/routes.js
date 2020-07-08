@@ -43,10 +43,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "Vitals" */ "../views/Vitals"),
       },
       {
-        path: "traige",
+        path: "triage",
         name: "triage",
         meta: { title: 'Triage' },
         component: () => import(/* webpackChunkName: "Triage" */ "../views/Triage"),
+      },
+      {
+        path: "probability",
+        name: "probability",
+        meta: { title: 'Probability' },
+        component: () => import(/* webpackChunkName: "Probability" */ "../views/Probability"),
       },
     ]
   },
