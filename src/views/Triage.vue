@@ -1,4 +1,5 @@
 <template>
+<ValidationProvider v-slot="{ invalid }">
   <v-container fluid>
     <v-form>
       <v-text-field
@@ -48,20 +49,26 @@
       ></v-select>
       <div class="spacer"></div>
       <div class="d-flex justify-center">
-        <v-btn color="primary" x-large rounded @click="submitTriageSigns">
+        <v-btn color="primary" x-large rounded @click="submitTriageSigns" :disabled="invalid">
           <v-icon left large dark>mdi-plus-right</v-icon>Calcular Probabilidad RCP
         </v-btn>
       </div>
     </v-form>
   </v-container>
+</ValidationProvider>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
 import { HTTP } from "../http-common";
 import { symptomsList, comorbiditiesList } from "../common/triageLists";
+import { ValidationProvider, ValidationObserver } from "vee-validate";
 
 export default {
+  components: {
+    ValidationObserver,
+    ValidationProvider
+  },
   computed: {
     triageObject() {
       return {
