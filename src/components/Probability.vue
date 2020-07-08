@@ -6,10 +6,10 @@
       size="55"
       width="7"
       :value="probability"
-    >{{ probability }}%</v-progress-circular>
+    >{{ probability }}</v-progress-circular>
     <v-progress-circular v-else color="grey darken-1" size="55" width="7" :value="probability">NA</v-progress-circular>
     <div class="meta-data">
-      <span class="font-weight-bold">#12345</span>
+      <span class="font-weight-bold">#{{ uuid.substring(0,6) }}</span>
       <br />
       <span class="text--secondary caption">Ingreso: {{admissionFromNow}}</span>
       <br />
@@ -33,6 +33,10 @@ export default {
     },
     probability: {
       type: Number
+    },
+    uuid: {
+      type: String,
+      required: true,
     }
   },
   computed: {

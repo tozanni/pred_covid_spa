@@ -1,12 +1,17 @@
 <template>
-<ValidationProvider v-slot="{ invalid }">
+<ValidationObserver v-slot="{ invalid }" slim>
   <v-container fluid>
     <v-form>
-      <v-text-field
-        label="Dias enfermo antes de ingreso"
-        v-model="form.days_before_admission"
-        suffix="dias"
-      ></v-text-field>
+      <ValidationProvider rules="required|numeric|min:0" name="days_before_admission" v-slot="{ errors, valid }">
+        <v-text-field
+          label="Dias enfermo antes de ingreso"
+          v-model.number="form.days_before_admission"
+          suffix="dias"
+          type="number"
+          :success="valid"
+          :error-messages="errors"
+        ></v-text-field>
+      </ValidationProvider>
       <v-checkbox v-model="form.difficulty_breathing" label="Dificultad para respirar"></v-checkbox>
       <v-checkbox v-model="form.chest_pain" label="Dolor Toracico"></v-checkbox>
       <v-checkbox v-model="form.pregnant" label="Embarazo"></v-checkbox>
@@ -55,7 +60,7 @@
       </div>
     </v-form>
   </v-container>
-</ValidationProvider>
+</ValidationObserver>
 </template>
 
 <script>
@@ -95,8 +100,8 @@ export default {
         days_before_admission: null,
         difficulty_breathing: false,
         chest_pain: false,
-        headache: null,
-        cough: null,
+        headache: 0,
+        cough: 0,
         other_symptoms: null,
         comorbidities: null,
         smoker: false,

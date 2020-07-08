@@ -47,9 +47,9 @@
         <div class="spacer"></div>
       </v-form>
     </ValidationObserver>
-    <v-row v-if="record" v-show="$route.name !== 'probability'"  align="center" justify="center">
+    <v-row v-if="record" v-show="$route.name !== 'probability'" align="center" justify="center">
       <v-col xs="12" sm="6" cols="12">
-        <Probability :probability="probability" :admission-date="record.admission_date"/>
+        <Probability :probability="probability" :uuid="uuid" :admission-date="record.admission_date" />
       </v-col>
       <v-col xs="12" sm="6" cols="12">
         <span class="font-weight-bold">Estado:</span>
@@ -133,7 +133,13 @@ export default {
         })
         .catch(error => console.error(error));
     },
-    ...mapActions("record", ["setRecord", "clearRecord", "fetchRecord", "formatDates", "setProbability"])
+    ...mapActions("record", [
+      "setRecord",
+      "clearRecord",
+      "fetchRecord",
+      "formatDates",
+      "setProbability"
+    ])
   },
   created() {
     if (this.uuid === undefined) {
