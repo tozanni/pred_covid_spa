@@ -1,6 +1,8 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import records from "./modules/records";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate";
+
+import record from "./modules/record";
 
 Vue.use(Vuex);
 
@@ -12,6 +14,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    records
+    record
   },
-});
+  plugins: [createPersistedState()],
+})

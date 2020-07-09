@@ -1,67 +1,85 @@
 <template>
-  <v-container>
-    <v-row no-gutters align="center" justify="start">
-      <v-col cols="3">
-        <v-progress-circular
-          color="red"
-          size="85"
-          width="7"
-          :value="probability"
-        >
-          <span class="title">{{probability}}%</span>
-        </v-progress-circular>
-      </v-col>
-      <v-col>
-        <h2 class="headline">Probabilidad que requiera RcP </h2>
-        <p class="text--secondary">(Reanimación cardiopulmonar)</p>
-      </v-col>
-    </v-row>
-    <div class="ma-5">
-      <h2 class="title">#09290</h2>
-      <p class="text--secondary">Ingreso: hace dos dias.</p>
-    </div>
-    <v-divider></v-divider>
-    <div class="ma-5">
-      <div>Asthma, Presion Alta</div>
-      <div>Temperatura: <span class="red--text">36.23 °C</span></div>
-      <div>Tos - <span class="red--text">Dificaultad para respirar</span></div>
-    </div>
-    <v-row align="center">
-      <v-col class="text-center">
-        <v-btn class="mb-3" color="primary" text center :to="{name: 'medicalRecord'}"
-          >volver al expediente</v-btn
-        >
-        <v-btn
-          class="mb-3"
-          color="primary"
-          x-large
-          rounded
-          :to="{ name: 'notes' }"
-        >
-          <v-icon left large dark>mdi-chevron-left</v-icon>
-          Notas Medicas
-        </v-btn>
-        <v-btn
-          class="mb-3"
-          color="primary"
-          x-large
-          rounded
-          :to="{ name: 'home' }"
-        >
-          <v-icon left large dark>mdi-plus</v-icon>
-          Nuevo Paciente
-        </v-btn>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="d-flex flex-column align-center">
+    <v-progress-circular
+      :color="colorCode"
+      size="120"
+      width="10"
+      :value="probability"
+    >{{ probability }}%</v-progress-circular>
+    <h2>Probabilidad De Requerir RCP</h2>
+    <span class="subtitle-1">(Reanimacion Cardiopulmonar)</span>
+    <br />
+    <br />
+    <strong>#{{ record.id.match(/.{5}/)[0] }}</strong>
+    <p class>Ingreso: {{ admissionFromNow }}</p>
+    <br />
+    <br />
+    <p class>{{ record.triage.other_symptoms.map(s => getSymptomName(s)).join(', ') }}</p>
+    <p class>{{ record.triage.comorbidities.map(s => getComorbidityName(s)).join(', ') }}</p>
+    <p class>
+      Temperatura de ingreso:
+      <span
+        class="font-weight-bold"
+      >{{ record.vital_signs.temperature }}&#176;C</span>
+    </p>
+
+    <v-btn color="primary" x-large text :to="{name: 'medicalRecord', params: {uuid: record.id}}">
+      <v-icon left large dark>mdi-chevron-left</v-icon>Regresar A Expediente
+    </v-btn>
+    <br>
+    <br>
+    <br>
+    <br>
+    <v-btn color="primary" x-large rounded>
+      <v-icon left large dark>mdi-plus</v-icon>Nuevo Expediente
+    </v-btn>
+  </div>
 </template>
 
 <script>
+import ProbabilityVue from "../components/Probability.vue";
+import { mapState, mapActions } from "vuex";
+import { HTTP } from "../http-common";
+import moment from "moment/moment";
+import { getSymptomName, getComorbidityName } from "../common/triageLists";
+
 export default {
   data() {
-    return {
-      probability: 75,
-    };
+    return {};
   },
+  computed: {
+    admissionFromNow() {
+      moment.updateLocale("es");
+      const admissionDate = moment(this.admission_date);
+      if (moment().diff(admissionDate, "hours") < 21) {
+        return "Hoy";
+      }
+      return moment(this.admission_date).fromNow();
+    },
+    colorCode() {
+      return this.probability <= 30
+        ? "#48bb78"
+        : this.probability <= 60
+        ? "#ecc94b"
+        : "#f56565";
+    },
+    ...mapState("record", ["record", "probability"])
+  },
+  created() {
+    HTTP.get(`records/${this.record.id}/prediction`)
+      .then(res => {
+        const match = res.data.probability.match(/\d*\.\d*/)[0];
+        this.setProbability(Math.round(Number(match) * 100));
+      })
+      .catch(error => console.error(error));
+  },
+  methods: {
+    getSymptomName,
+    getComorbidityName,
+    ...mapActions("record", ["setProbability"])
+  }
 };
 </script>
+
+<style>
+</style>
