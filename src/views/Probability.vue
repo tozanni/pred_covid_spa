@@ -5,6 +5,7 @@
       size="120"
       width="10"
       :value="probability"
+      :indeterminate="false"
     >{{ probability }}%</v-progress-circular>
     <h2>Probabilidad De Requerir RCP</h2>
     <span class="subtitle-1">(Reanimacion Cardiopulmonar)</span>

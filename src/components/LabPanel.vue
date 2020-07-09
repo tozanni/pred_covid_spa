@@ -3,33 +3,43 @@
     <v-expansion-panel-header>
       <div>
         <h2 class="headline">{{ title }}</h2>
-        <span class="subtitle" :class="completed ? '' : 'teal--text'">{{
+        <span class="subtitle" :class="completed ? '' : 'teal--text'">
+          {{
           subtitle
-        }}</span>
+          }}
+        </span>
       </div>
     </v-expansion-panel-header>
     <v-expansion-panel-content>
       <v-form>
-        <template v-for="meta in metadata">
+        <template v-for="field in fields">
           <v-text-field
-            v-if="meta.type === 'text'"
-            :key="meta.name"
-            :label="meta.name"
-            v-model="meta.value"
-            :suffix="meta.units"
+            v-if="field.type === 'text'"
+            :key="field.name"
+            :label="field.name"
+            v-model="field.value"
+            :suffix="field.units"
+          ></v-text-field>
+          <v-text-field
+            v-if="field.type === 'number'"
+            :key="field.name"
+            :label="field.name"
+            type="number"
+            v-model.number="field.value"
+            :suffix="field.units"
           ></v-text-field>
           <v-checkbox
-            v-if="meta.type === 'boolean'"
-            :key="meta.name"
-            v-model="meta.value"
-            :label="meta.name"
+            v-if="field.type === 'boolean'"
+            :key="field.name"
+            v-model="field.value"
+            :label="field.name"
           ></v-checkbox>
           <v-select
-            v-if="meta.type === 'select'"
-            :key="meta.name"
-            :items="meta.options"
-            :label="meta.name"
-            v-model="meta.value"
+            v-if="field.type === 'select'"
+            :key="field.name"
+            :items="field.options"
+            :label="field.name"
+            v-model="field.value"
             dense
           ></v-select>
         </template>
@@ -43,20 +53,20 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
+      required: true
     },
     subtitle: {
       type: String,
-      default: "Incompleto",
+      default: "Incompleto"
     },
     completed: {
       type: Boolean,
-      default: true,
+      default: true
     },
-    metadata: {
-      type: Array,
-      required: true,
-    },
-  },
+    fields: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>

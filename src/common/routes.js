@@ -56,6 +56,12 @@ const routes = [
         meta: { title: 'Probability' },
         component: () => import(/* webpackChunkName: "Probability" */ "../views/Probability"),
       },
+      {
+        path: "laboratorios",
+        name: "labs",
+        meta: { title: 'Laboratorios' },
+        component: () => import(/* webpackChunkName: "Laboratorios" */ "../views/Laboratorios"),
+      }
     ]
   },
   {
@@ -65,22 +71,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "MedicalRecords" */ "../views/MedicalRecordList"),
   },
   {
-    path: "/laboratorios",
-    name: "laboratorios",
-    meta: { title: 'Laboratorios' },
-    component: () => import(/* webpackChunkName: "Laboratorios" */ "../views/Laboratorios"),
-  },
-  {
     path: "/notas-medicas",
     name: "notas",
     meta: { title: 'Notas Medicas' },
     component: () => import(/* webpackChunkName: "Notes" */ "../views/Notes"),
-  },
-  {
-    path: "/probability",
-    name: "probability",
-    meta: {title: 'Probabilidad RCP'},
-    component: () => import(/* webpackChunkName: "Probability" */ "../views/Probability"),
   },
   {
     path: "/non-suspicious",

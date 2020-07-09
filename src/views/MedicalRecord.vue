@@ -1,5 +1,5 @@
 <template>
-  <div class="div">
+  <v-container class="div">
     <ValidationObserver v-if="showForm && persisted === false" v-slot="{ invalid }">
       <v-form @submit.prevent>
         <h2>Crear Nuevo Expediente</h2>
@@ -76,9 +76,15 @@
         :to="{name: 'triage', params: {uuid}}"
         :disabled="!record.vital_signs"
       />
+      <CardLink
+        title="Laboratorios"
+        subtitle="Completado hace 2 dias"
+        :to="{name: 'labs', params: {uuid}}"
+        :disabled="!record.triage"
+      />
     </template>
     <router-view></router-view>
-  </div>
+  </v-container>
 </template>
 
 <script>
