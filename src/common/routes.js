@@ -41,25 +41,25 @@ const routes = [
       {
         path: "vitals",
         name: "vitals",
-        meta: { title: 'Signos Vitales' },
+        meta: { title: 'Signos Vitales', back: true },
         component: () => import(/* webpackChunkName: "Vitals" */ "../views/Vitals"),
       },
       {
         path: "triage",
         name: "triage",
-        meta: { title: 'Triage' },
+        meta: { title: 'Triage', back: true },
         component: () => import(/* webpackChunkName: "Triage" */ "../views/Triage"),
       },
       {
         path: "probability",
         name: "probability",
-        meta: { title: 'Probability' },
+        meta: { title: 'Probability', back: true },
         component: () => import(/* webpackChunkName: "Probability" */ "../views/Probability"),
       },
       {
         path: "laboratorios",
         name: "labs",
-        meta: { title: 'Laboratorios' },
+        meta: { title: 'Laboratorios', back: true },
         component: () => import(/* webpackChunkName: "Laboratorios" */ "../views/Laboratorios"),
       }
     ]

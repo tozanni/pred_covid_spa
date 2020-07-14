@@ -38,7 +38,16 @@
             <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
           </v-date-picker>
         </v-menu>
-        <v-text-field label="Estado:" v-model="status" placeholder="Ej. Cuidados intensivos"></v-text-field>
+        <ValidationProvider name="required" :rules="{required: true}" v-slot="{ errors, valid }">
+          <v-text-field
+            label="Estado:"
+            v-model="status"
+            placeholder="Ej. Cuidados intensivos"
+            :error="errors.length > 0"
+            :success="valid"
+            :error-messages="errors"
+          ></v-text-field>
+        </ValidationProvider>
         <div class="d-flex justify-center">
           <v-btn color="primary" @click="submitRecord()" :disabled="invalid">
             <v-icon left large dark>mdi-plus</v-icon>Nuevo Registro
@@ -49,7 +58,11 @@
     </ValidationObserver>
     <v-row v-if="record" v-show="$route.name !== 'probability'" align="center" justify="center">
       <v-col xs="12" sm="6" cols="12">
-        <Probability :probability="probability" :uuid="uuid" :admission-date="record.admission_date" />
+        <Probability
+          :probability="probability"
+          :uuid="uuid"
+          :admission-date="record.admission_date"
+        />
       </v-col>
       <v-col xs="12" sm="6" cols="12">
         <span class="font-weight-bold">Estado:</span>
@@ -66,22 +79,27 @@
     <template v-if="persisted && $route.name === 'medicalRecord'">
       <CardLink
         title="Signos Vitales"
-        subtitle="Completado hace 2 dias"
+        :subtitle="record.vital_signs ? 'Completado' : ''"
         :to="{name: 'vitals', params: {uuid}}"
         :disabled="showForm"
       />
       <CardLink
         title="Triage"
-        subtitle="Completado hace 2 dias"
+        :subtitle="record.triage ? 'Completado' : ''"
         :to="{name: 'triage', params: {uuid}}"
         :disabled="!record.vital_signs"
       />
       <CardLink
         title="Laboratorios"
-        subtitle="Completado hace 2 dias"
+        :subtitle="record.labs ? 'Completado' : ''"
         :to="{name: 'labs', params: {uuid}}"
         :disabled="!record.triage"
       />
+      <div v-if="record.triage" class="d-flex justify-center">
+        <v-btn color="primary" x-large rounded @click="submitLaboratories()">
+          <v-icon left large dark>mdi-chevron-right</v-icon>Calcular probabilidad rcp
+        </v-btn>
+      </div>
     </template>
     <router-view></router-view>
   </v-container>

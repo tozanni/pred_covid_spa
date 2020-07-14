@@ -10,7 +10,7 @@
           v-for="lab in labs"
           :key="lab.title"
           :title="lab.title"
-          :subtitle="lab.completed"
+          :subtitle="lab.completed ? 'Completado' : 'Incompleto'"
           :completed="lab.completed ? true : false"
           :fields="lab.fields"
         />
@@ -38,30 +38,29 @@ export default {
     labs: {
       hematic_biometry: {
         title: "Biometria Hematica",
-        completed: "Completado hace 2 dias",
         fields: {
           hematocrit: {
             name: "Hematocrito",
             units: "%",
-            value: 32,
+            value: null,
             type: "number"
           },
           hemoglobin: {
             name: "Hemoglobina",
             units: "gr/dL",
-            value: 50,
+            value: null,
             type: "number"
           },
           leukocytes: {
             name: "Leucocitos",
             units: "cels./uL",
-            value: 45,
+            value: null,
             type: "number"
           },
           platelets: {
             name: "Plaquetas",
             units: "cels./uL",
-            value: 30,
+            value: null,
             type: "number"
           }
         }
@@ -239,13 +238,11 @@ export default {
         for (const [field, metaField] of Object.entries(
           this.labs[lab].fields
         )) {
-          if (
-            field !== "id" &&
-            this.labs[lab].fields[field].value !== null
-          ) {
-            record[lab][field] = this.labs[lab].fields[field].value == ""
-              ? null
-              : this.labs[lab].fields[field].value;
+          if (field !== "id" && this.labs[lab].fields[field].value !== null) {
+            record[lab][field] =
+              this.labs[lab].fields[field].value == ""
+                ? null
+                : this.labs[lab].fields[field].value;
           }
         }
         if (Object.keys(record[lab]).length === 0) {
@@ -265,6 +262,9 @@ export default {
           if (field !== "id") {
             this.labs[lab].fields[field].value = this.record[lab][field];
           }
+        }
+        if(this.record[lab].id) {
+          this.labs[lab].completed = true;
         }
       }
     }

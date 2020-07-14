@@ -3,7 +3,7 @@
     <v-expansion-panel-header>
       <div>
         <h2 class="headline">{{ title }}</h2>
-        <span class="subtitle" :class="completed ? '' : 'teal--text'">
+        <span class="subtitle" :class="completed ? 'teal--text' : ''">
           {{
           subtitle
           }}
