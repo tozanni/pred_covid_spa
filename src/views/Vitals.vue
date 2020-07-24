@@ -37,6 +37,7 @@
           v-model.number="form.weight"
           suffix="kg"
           :success="valid"
+          type="number"
           :error-messages="errors"
         ></v-text-field>
       </ValidationProvider>
@@ -47,6 +48,7 @@
           v-model.number="form.height"
           suffix="cm"
           :success="valid"
+          type="number"
           :error-messages="errors"
         ></v-text-field>
       </ValidationProvider>
@@ -64,6 +66,7 @@
           v-model.number="form.diastolic_blood_pressure"
           suffix="mmhg"
           :success="valid"
+          type="number"
           :error-messages="errors"
         ></v-text-field>
       </ValidationProvider>
@@ -76,6 +79,7 @@
           label="T.A. Sistolica:"
           v-model.number="form.systolic_blood_pressure"
           suffix="mmhg"
+          type="number"
           :success="valid"
           :error-messages="errors"
         ></v-text-field>
@@ -87,6 +91,7 @@
           v-model.number="form.heart_rate"
           suffix="latidos/min"
           :success="valid"
+          type="number"
           :error-messages="errors"
         ></v-text-field>
       </ValidationProvider>
@@ -101,6 +106,7 @@
           v-model.number="form.breathing_frequency"
           suffix="respiraciones/min"
           :success="valid"
+          type="number"
           :error-messages="errors"
         ></v-text-field>
       </ValidationProvider>
@@ -115,6 +121,7 @@
           v-model.number="form.temperature"
           suffix="°C"
           :success="valid"
+          type="number"
           :error-messages="errors"
         ></v-text-field>
       </ValidationProvider>
@@ -124,6 +131,7 @@
           label="Oximetria:"
           v-model.number="form.oximetry"
           suffix="%"
+          type="number"
           :success="valid"
           :error-messages="errors"
         ></v-text-field>
@@ -138,6 +146,7 @@
           v-model.number="form.capillary_glucose"
           suffix="mg/dl"
           :success="valid"
+          type="number"
           :error-messages="errors"
         ></v-text-field>
       </ValidationProvider>
