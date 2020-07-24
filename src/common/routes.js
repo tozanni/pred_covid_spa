@@ -5,7 +5,7 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
-    meta: {title: 'Probabilidad RCP'},
+    meta: { title: 'Probabilidad RCP' },
   },
   {
     path: "/login",
@@ -61,7 +61,13 @@ const routes = [
         name: "labs",
         meta: { title: 'Laboratorios', back: true },
         component: () => import(/* webpackChunkName: "Laboratorios" */ "../views/Laboratorios"),
-      }
+      },
+      {
+        path: "medical-notes",
+        name: "notes",
+        meta: { title: 'Notas Medicas' },
+        component: () => import(/* webpackChunkName: "Notes" */ "../views/Notes"),
+      },
     ]
   },
   {
@@ -71,15 +77,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "MedicalRecords" */ "../views/MedicalRecordList"),
   },
   {
-    path: "/notas-medicas",
-    name: "notas",
-    meta: { title: 'Notas Medicas' },
-    component: () => import(/* webpackChunkName: "Notes" */ "../views/Notes"),
-  },
-  {
     path: "/non-suspicious",
     name: "non-suspicious",
-    meta: {title: 'No Sospechoso'},
+    meta: { title: 'No Sospechoso' },
     component: () => import(/* webpackChunkName: "NonSuspicious" */ "../views/NonSuspicious"),
   },
   {

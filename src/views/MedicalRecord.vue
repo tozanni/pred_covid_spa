@@ -95,6 +95,12 @@
         :to="{name: 'labs', params: {uuid}}"
         :disabled="!record.triage"
       />
+      <CardLink
+        title="Notas Medicas"
+        :subtitle="record.medical_notes ? 'Completado' : ''"
+        :to="{name: 'notes', params: {uuid}}"
+        :disabled="!record.vital_signs"
+      />
       <div v-if="record.triage" class="d-flex justify-center">
         <v-btn color="primary" x-large rounded @click="submitLaboratories()">
           <v-icon left large dark>mdi-chevron-right</v-icon>Calcular probabilidad rcp
