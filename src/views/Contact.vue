@@ -45,13 +45,6 @@
         </v-btn>
       </v-form>
     </ValidationObserver>
-
-    <v-snackbar v-model="snackbar" color="#48bb78">
-      Gracias por tu mensaje.
-      <template v-slot:action="{ attrs }">
-        <v-btn text v-bind="attrs" @click="snackbar = false">Cerrar</v-btn>
-      </template>
-    </v-snackbar>
   </v-container>
 </template>
 
@@ -73,7 +66,6 @@ export default {
         subject: null,
         message: null,
       },
-      snackbar: false,
       items: [
         "Quiero colaborar",
         "Retroalimentacion",
@@ -86,7 +78,12 @@ export default {
     submit() {
       HTTP.post('contact', this.form)
         .then((res) => {
-          this.snackbar = true;
+          this.$router.push({
+            name: "home",
+            params: {
+              snackbar: 'Gracias por tu mensaje.'
+            }
+          });
         })
         .catch((error) => console.error(error));
     },

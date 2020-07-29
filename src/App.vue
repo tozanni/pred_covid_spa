@@ -18,7 +18,11 @@
       </template>
     </v-navigation-drawer>
     <v-app-bar app clipped-right color="primary" dark>
-      <router-link v-show="$route.meta.back" icon :to="{name: 'medicalRecord', params: {uuid: $route.params.uuid}}">
+      <router-link
+        v-show="$route.meta.back"
+        icon
+        :to="{name: 'medicalRecord', params: {uuid: $route.params.uuid}}"
+      >
         <v-icon x-large>mdi-chevron-left</v-icon>
       </router-link>
       <v-app-bar-nav-icon v-show="!$route.meta.back" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
@@ -27,6 +31,13 @@
     </v-app-bar>
     <v-main>
       <router-view :key="$route.path" />
+
+      <v-snackbar v-model="snackbar" color="#48bb78">
+        {{ text }}
+        <template v-slot:action="{ attrs }">
+          <v-btn text v-bind="attrs" @click="snackbar = false">Cerrar</v-btn>
+        </template>
+      </v-snackbar>
     </v-main>
   </v-app>
 </template>
@@ -34,14 +45,31 @@
 <script>
 import NavigationList from "./components/NavigationList";
 
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "App",
   components: {
-    NavigationList
+    NavigationList,
   },
   data: () => ({
-    drawer: null
-  })
+    drawer: null,
+    text: '',
+    snackbar: false
+  }),
+  methods: {
+    openSnackbar(text) {
+      this.text = text;
+      this.snackbar = true;
+    }
+  },
+  watch: {
+    $route(to,from) {
+      if (!!this.$route.params.snackbar) {
+        this.openSnackbar(this.$route.params.snackbar);
+      }
+    }
+  }
 };
 </script>
 
