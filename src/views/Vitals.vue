@@ -2,6 +2,7 @@
 <ValidationObserver slim v-slot="{ invalid }">
   <form action>
     <v-container fluid>
+      <v-text-field label="Estado:" v-model="status" placeholder="Ej. Cuidados intensivos"></v-text-field>
       <ValidationProvider
         name="edad"
         rules="required|numeric|between:1,120"
@@ -176,7 +177,7 @@ export default {
     vitalsObject() {
       return {
         admission_date: this.record.admission_date,
-        status: this.record.status,
+        status: this.status,
         vital_signs: {
           age: moment()
             .subtract(this.form.age, "years")
@@ -198,6 +199,7 @@ export default {
   },
   data() {
     return {
+      status: "",
       form: {
         age: null,
         gender: null,
@@ -235,6 +237,7 @@ export default {
   mounted() {
     if (this.record && this.record.vital_signs) {
       this.form = { ...this.record.vital_signs };
+      this.status = this.record.status;
     }
   }
 };

@@ -38,16 +38,6 @@
             <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
           </v-date-picker>
         </v-menu>
-        <ValidationProvider name="required" :rules="{required: true}" v-slot="{ errors, valid }">
-          <v-text-field
-            label="Estado:"
-            v-model="status"
-            placeholder="Ej. Cuidados intensivos"
-            :error="errors.length > 0"
-            :success="valid"
-            :error-messages="errors"
-          ></v-text-field>
-        </ValidationProvider>
         <div class="d-flex justify-center">
           <v-btn color="primary" @click="submitRecord()" :disabled="invalid">
             <v-icon left large dark>mdi-plus</v-icon>Nuevo Registro
@@ -125,51 +115,50 @@ export default {
     dateFormatted() {
       return this.date ? moment(this.date).format("YYYY-MM-DD HH:mm:ss") : "";
     },
-    ...mapState("record", ["record", "persisted", "probability"])
+    ...mapState("record", ["record", "persisted", "probability"]),
   },
   components: {
     Probability,
     CardLink,
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   props: {
     uuid: {
       required: false,
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
       showForm: false,
       menu: false,
-      status: "",
-      date: new Date().toISOString().substr(0, 10)
+      date: new Date().toISOString().substr(0, 10),
     };
   },
   methods: {
     submitRecord() {
       HTTP.post("records", {
         admission_date: this.dateFormatted,
-        status: this.status
+        status: this.status,
       })
-        .then(res => {
+        .then((res) => {
           this.setRecord(res.data);
           this.setProbability(0);
           this.$router.push({
             name: "medicalRecord",
-            params: { uuid: this.record.id }
+            params: { uuid: this.record.id },
           });
         })
-        .catch(error => console.error(error));
+        .catch((error) => console.error(error));
     },
     ...mapActions("record", [
       "setRecord",
       "clearRecord",
       "fetchRecord",
       "formatDates",
-      "setProbability"
-    ])
+      "setProbability",
+    ]),
   },
   created() {
     if (this.uuid === undefined) {
@@ -179,6 +168,6 @@ export default {
       this.fetchRecord(this.uuid);
       this.setProbability(0);
     }
-  }
+  },
 };
 </script>
