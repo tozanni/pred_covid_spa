@@ -7,6 +7,7 @@
             <a href="https://inodata.mx" target="_blank"><img src="build/images/logos/inodata_logo.png" class="mx-4 my-4" height="80" alt="Inodata Soluciones TI"></a>
             <a href="https://www.facebook.com/groups/469523539899326" target="_blank"><img src="build/images/logos/data_science_mty_logo.png" class="mx-4 my-4" height="80" alt="Data Science Monterrey"></a>
             <a href="https://usaria.mx" target="_blank"><img src="build/images/logos/usaria_logo.png" class="mx-4 my-4" height="80" alt="Usaria"></a>
+            <a href="https://www.edenred.mx/" target="_blank"><img src="build/images/logos/edenred_logo.png" class="mx-4 my-4" height="80" alt="Usaria"></a>
             <img src="build/images/logos/Logo-AP-HP-quadri-Converti.png" class="mx-4 my-4" height="80" alt="Assistance Publique Hôspitaux de Paris">
             <img src="build/images/logos/mit_logo.png" class="mx-4 my-4" height="80" alt="">
         </div>
@@ -27,7 +28,7 @@
             datos que sirvan para hacer el mapeo de características o variables
             específicas a deterioro.
         </p>
-
+        <!--
         <h2>Voluntarios:</h2>
         <h3>Coordinación de Proyecto:</h3>
         <p>
@@ -54,5 +55,6 @@
             Data Science Monterrey <br>
             Edenred
         </p>
+        -->
     </v-container>
 </template>
