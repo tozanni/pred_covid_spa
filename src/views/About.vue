@@ -1,5 +1,15 @@
 <template>
   <v-container>
+    <div class="d-flex flex-wrap justify-space-around">
+      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
+      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
+      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
+      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
+      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
+      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
+      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
+      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
+    </div>
     <p>
       Sobre el proyecto: En el Tec de Monterrey queremos desarrollar una
       aplicación de “machine learning” que ayude a determinar la probabilidad de
