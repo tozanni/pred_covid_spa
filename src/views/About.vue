@@ -1,14 +1,14 @@
 <template>
   <v-container>
     <div class="d-flex flex-wrap justify-space-around">
-      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
-      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
-      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
-      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
-      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
-      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
-      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
-      <img class="mx-4" src="/img/icons/apple-touch-icon-76x76.png" alt="" srcset="">
+      <img src="https://picsum.photos/510/300?random" class="mx-4 my-4" height="140">
+      <img src="https://picsum.photos/510/300?random" class="mx-4 my-4" height="140">
+      <img src="https://picsum.photos/510/300?random" class="mx-4 my-4" height="140">
+      <img src="https://picsum.photos/510/300?random" class="mx-4 my-4" height="140">
+      <img src="https://picsum.photos/510/300?random" class="mx-4 my-4" height="140">
+      <img src="https://picsum.photos/510/300?random" class="mx-4 my-4" height="140">
+      <img src="https://picsum.photos/510/300?random" class="mx-4 my-4" height="140">
+      <img src="https://picsum.photos/510/300?random" class="mx-4 my-4" height="140">
     </div>
     <p>
       Sobre el proyecto: En el Tec de Monterrey queremos desarrollar una
