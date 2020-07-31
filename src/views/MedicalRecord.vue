@@ -92,7 +92,7 @@
         :disabled="!record.vital_signs"
       />
       <div v-if="record.triage" class="d-flex justify-center">
-        <v-btn color="primary" x-large rounded @click="submitLaboratories()">
+        <v-btn color="primary" x-large rounded :to="{name: 'probability', params: { uuid: this.record.id }}">
           <v-icon left large dark>mdi-chevron-right</v-icon>Calcular probabilidad rcp
         </v-btn>
       </div>
