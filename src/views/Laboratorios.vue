@@ -32,10 +32,66 @@ import { HTTP } from "../http-common";
 
 export default {
   components: {
-    LabPanel
+    LabPanel,
   },
   data: () => ({
     labs: {
+      covid: {
+        title: "Extras para COVID",
+        fields: {
+          pcr: {
+            name: "PCR - Prueba COVID",
+            value: null,
+            type: "select",
+            options: [
+              {
+                value: "positive",
+                text: "Positivo",
+              },
+              {
+                value: "negative",
+                text: "Negative",
+              },
+            ],
+          },
+          ldh: {
+            name: "LDH",
+            units: "U/L",
+            value: null,
+            type: "number",
+          },
+          il_6: {
+            name: "IL-6",
+            units: "pg/ml",
+            value: null,
+            type: "number",
+          },
+          ferritin: {
+            name: "Ferritina",
+            units: "mcg/L",
+            value: null,
+            type: "number",
+          },
+          troponin: {
+            name: "LDH",
+            units: "ng/ml",
+            value: null,
+            type: "number",
+          },
+          igm: {
+            name: "LDH",
+            units: "",
+            value: null,
+            type: "number",
+          },
+          igg: {
+            name: "LDH",
+            units: "",
+            value: null,
+            type: "number",
+          },
+        },
+      },
       hematic_biometry: {
         title: "Biometria Hematica",
         fields: {
@@ -43,27 +99,33 @@ export default {
             name: "Hematocrito",
             units: "%",
             value: null,
-            type: "number"
+            type: "number",
           },
           hemoglobin: {
             name: "Hemoglobina",
             units: "gr/dL",
             value: null,
-            type: "number"
+            type: "number",
           },
           leukocytes: {
             name: "Leucocitos",
             units: "cels./uL",
             value: null,
-            type: "number"
+            type: "number",
+          },
+          lymphocytes: {
+            name: "Linfocitos",
+            units: "cels./uL",
+            value: null,
+            type: "number",
           },
           platelets: {
             name: "Plaquetas",
             units: "cels./uL",
             value: null,
-            type: "number"
-          }
-        }
+            type: "number",
+          },
+        },
       },
       blood_chemistry: {
         title: "Quimica Sanguinea",
@@ -72,39 +134,39 @@ export default {
             name: "Glucosa",
             units: "mg/dL",
             value: null,
-            type: "number"
+            type: "number",
           },
           urea: {
             name: "Urea",
             units: "mg/dL",
             value: null,
-            type: "number"
+            type: "number",
           },
           creatinine: {
             name: "Creatina",
             units: "mg/dL",
             value: null,
-            type: "number"
+            type: "number",
           },
           cholesterol: {
             name: "Colesterol",
             units: "mg/dL",
             value: null,
-            type: "number"
+            type: "number",
           },
           triglycerides: {
             name: "Trigliceridos",
             units: "mg/dL",
             value: null,
-            type: "number"
+            type: "number",
           },
           glycated_hemoglobin: {
             name: "Hemoglobina Glicida",
             units: "%",
             value: null,
-            type: "number"
-          }
-        }
+            type: "number",
+          },
+        },
       },
       serum_electrolytes: {
         title: "Electrolitos Sericos",
@@ -113,15 +175,15 @@ export default {
             name: "Sodio",
             units: "mEq/L",
             value: null,
-            type: "number"
+            type: "number",
           },
           potassium: {
             name: "Potasio",
             units: "mEq/L",
             value: null,
-            type: "number"
-          }
-        }
+            type: "number",
+          },
+        },
       },
       liver_function: {
         title: "Funcion Hepatica",
@@ -130,21 +192,21 @@ export default {
             name: "Aspartato Aminotransferasa",
             units: "U/L",
             value: null,
-            type: "number"
+            type: "number",
           },
           alanine_transaminase: {
             name: "Alanina Aminotransferasa",
             units: "U/L",
             value: null,
-            type: "number"
+            type: "number",
           },
           blood_urea_nitrogen: {
             name: "BUN Serico (Nitrogeno Ureico)",
             units: "mg/dL",
             value: null,
-            type: "number"
-          }
-        }
+            type: "number",
+          },
+        },
       },
       clotting_time: {
         title: "Tiempos de Coagulacion",
@@ -153,15 +215,15 @@ export default {
             name: "Protrombina (TP)",
             units: "segs.",
             value: null,
-            type: "number"
+            type: "number",
           },
           thromboplastin: {
             name: "Tromboplastina (TPT)",
             units: "segs.",
             value: null,
-            type: "number"
-          }
-        }
+            type: "number",
+          },
+        },
       },
       immunological: {
         title: "Inmunologia",
@@ -170,17 +232,98 @@ export default {
             name: "Proteina C Reactiva",
             units: "Mg/dL",
             value: null,
-            type: "number"
-          }
+            type: "number",
+          },
+          procalcitonin: {
+            name: "Procalcitonina",
+            units: "ng/mL",
+            value: null,
+            type: "number",
+          },
+          d_dimer: {
+            name: "Dímero D",
+            units: "mg/mL",
+            value: null,
+            type: "number",
+          },
+        },
+      },
+      cardiac_enzymes: {
+        title: "Enzimas Cardiacas",
+        fields: {
+          cpk: {
+            name: "CPK",
+            units: "mg/dL",
+            value: null,
+            type: "number",
+          },
+          mioglobin: {
+            name: "Mioglobina",
+            units: "ng/ml",
+            value: null,
+            type: "number",
+          },
+        },
+      },
+      cardiac_enzymes: {
+        title: "Enzimas Cardiacas",
+        fields: {
+          cpk: {
+            name: "CPK",
+            units: "mg/dL",
+            value: null,
+            type: "number",
+          },
+          mioglobin: {
+            name: "Mioglobina",
+            units: "ng/ml",
+            value: null,
+            type: "number",
+          },
+        },
+      },
+      arterial_blood_gas: {
+        title: "Gasometría arterial",
+        fields: {
+          ph: {
+            name: "PH",
+            units: "",
+            type: "number",
+            value: null
+          },
+          co2: {
+            name: "CO2",
+            units: "",
+            type: "number",
+            value: null
+          },
+          o2: {
+            name: "O2",
+            units: "",
+            type: "number",
+            value: null
+          },
+          hco3: {
+            name: "HCO3-",
+            units: "",
+            type: "number",
+            value: null
+          },
+          be: {
+            name: "BE",
+            units: "",
+            type: "number",
+            value: null
+          },
         }
       },
       imaging: {
         title: "Imagenologia",
         fields: {
           radiography: {
-            name: "Radiografia de Torax",
+            name: "Radiografia de Torax o TAC",
             value: null,
-            type: "boolean"
+            type: "boolean",
           },
           result: {
             name: "Resultado",
@@ -189,47 +332,47 @@ export default {
             options: [
               {
                 value: "normal",
-                text: "Normal"
+                text: "Normal",
               },
               {
                 value: "infiltrate",
-                text: "Infiltrado"
+                text: "Infiltrado",
               },
               {
                 value: "apical_pneumatic_foci",
-                text: "Focos neumónicos Apicales"
+                text: "Focos neumónicos Apicales",
               },
               {
                 value: "basal_pneumatic_foci",
-                text: "Focos neumónicos Basales"
+                text: "Focos neumónicos Basales",
               },
               {
                 value: "bilateral_pneumatic_foci",
-                text: "Focos neumónicos Bilateral"
+                text: "Focos neumónicos Bilateral",
               },
               {
                 value: "generalized_pneumatic_foci",
-                text: "Focos neumónicos Generalizados"
+                text: "Focos neumónicos Generalizados",
               },
               {
                 value: "medial_pneumatic_foci",
-                text: "Focos neumónicos Mediales"
+                text: "Focos neumónicos Mediales",
               },
               {
                 value: "unilateral_pneumatic_foci",
-                text: "Focos neumónicos Unilateral"
-              }
-            ]
-          }
-        }
-      }
-    }
+                text: "Focos neumónicos Unilateral",
+              },
+            ],
+          },
+        },
+      },
+    },
   }),
   computed: {
     labsObject() {
       let record = {
         admission_date: this.record.admission_date,
-        status: this.record.status
+        status: this.record.status,
       };
       for (const [lab, meta] of Object.entries(this.labs)) {
         if (!record[lab]) {
@@ -251,7 +394,7 @@ export default {
       }
       return record;
     },
-    ...mapState("record", ["record"])
+    ...mapState("record", ["record"]),
   },
   mounted() {
     for (const [lab, meta] of Object.entries(this.labs)) {
@@ -263,7 +406,7 @@ export default {
             this.labs[lab].fields[field].value = this.record[lab][field];
           }
         }
-        if(this.record[lab].id) {
+        if (this.record[lab].id) {
           this.labs[lab].completed = true;
         }
       }
@@ -272,17 +415,17 @@ export default {
   methods: {
     submitLaboratories() {
       HTTP.put(`records/${this.record.id}`, this.labsObject)
-        .then(res => {
+        .then((res) => {
           this.setRecord(res.data);
           this.$router.push({
             name: "probability",
-            params: { uuid: this.record.id }
+            params: { uuid: this.record.id },
           });
         })
-        .catch(error => console.error(error));
+        .catch((error) => console.error(error));
     },
-    ...mapActions("record", ["setRecord"])
-  }
+    ...mapActions("record", ["setRecord"]),
+  },
 };
 </script>
 

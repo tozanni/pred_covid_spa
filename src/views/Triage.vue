@@ -111,15 +111,15 @@ export default {
   data() {
     return {
       form: {
-        days_before_admission: null,
-        difficulty_breathing: false,
-        chest_pain: false,
-        headache: 0,
-        cough: 0,
+        days_before_admission: null, //TODO: quitar dias de enfermo antes de la admission
+        difficulty_breathing: false, //TODO: quitar dificultad pararespirar
+        chest_pain: false, //TODO: quitar dolor de pecho
+        headache: 0, //TODO: quitar dolor de cabeza
+        cough: 0, //TODO: quitart tos
         other_symptoms: null,
         comorbidities: null,
-        smoker: false,
-        pregnant: false
+        smoker: false, //TODO: quitar
+        pregnant: false //TODO: quitar
       },
       sliderLabels: ["No", "Leve", "Moderado", "Grave"],
       symptomsList,

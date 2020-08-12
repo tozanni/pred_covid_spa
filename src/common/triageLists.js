@@ -8,7 +8,7 @@ export const symptomsList = [
         text: "Diarrea"
     },
     {
-        value: "articulations_pain",
+        value: "myalgia",
         text: "Dolor de articulaciones"
     },
     {
@@ -38,6 +38,18 @@ export const symptomsList = [
     {
         value: "threw_up",
         text: "Vómito"
+    },
+    {
+        value: "nasal_congestion",
+        text: "Congestión nasal"
+    },
+    {
+        value: "dyspnoea",
+        text: "Dificultad respiratoria o falta de aire"
+    },
+    {
+        value: "rhinorrhea",
+        text: "Rinorrea"
     }
 ];
 export const comorbiditiesList = [
@@ -58,8 +70,12 @@ export const comorbiditiesList = [
         text: "Cardiovascular"
     },
     {
-        value: "diabetes_1_and_2",
-        text: "Diabetes 1 y 2"
+        value: "type_1_diabetes",
+        text: "Diabetes tipo 1"
+    },
+    {
+        value: "type_2_diabetes",
+        text: "Diabetes tipo 2"
     },
     {
         value: "gestational_diabetes",
@@ -86,8 +102,8 @@ export const comorbiditiesList = [
         text: "Hipertensión"
     },
     {
-        value: "immunological",
-        text: "Inmunológica"
+        value: "Immunosuppression",
+        text: "Inmunosupresión"
     },
     {
         value: "leukemia",
@@ -102,7 +118,7 @@ export const comorbiditiesList = [
         text: "Osteoporosis"
     },
     {
-        value: "parkinson_s",
+        value: "parkinsons",
         text: "Parkinson"
     },
     {
