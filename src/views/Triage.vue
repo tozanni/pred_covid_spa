@@ -139,7 +139,7 @@ export default {
         .catch(error => console.error(error));
     },
     goToLabs() {
-      this.submitTriageSigns("labs")
+      this.submitTriageSigns("covid")
     },
     goToPrediction() {
       this.submitTriageSigns("probability")
