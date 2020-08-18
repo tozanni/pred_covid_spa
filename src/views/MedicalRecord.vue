@@ -80,6 +80,12 @@
         :disabled="!record.vital_signs"
       />
       <CardLink
+        title="Extras para COVID-19"
+        :subtitle="record.covid ? 'Completado' : ''"
+        :to="{name: 'covid', params: {uuid}}"
+        :disabled="!record.vital_signs"
+      />
+      <CardLink
         title="Laboratorios"
         :subtitle="record.labs ? 'Completado' : ''"
         :to="{name: 'labs', params: {uuid}}"

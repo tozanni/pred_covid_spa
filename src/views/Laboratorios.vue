@@ -36,62 +36,6 @@ export default {
   },
   data: () => ({
     labs: {
-      covid: {
-        title: "Extras para COVID",
-        fields: {
-          pcr: {
-            name: "PCR - Prueba COVID",
-            value: null,
-            type: "select",
-            options: [
-              {
-                value: "positive",
-                text: "Positivo",
-              },
-              {
-                value: "negative",
-                text: "Negative",
-              },
-            ],
-          },
-          ldh: {
-            name: "LDH",
-            units: "U/L",
-            value: null,
-            type: "number",
-          },
-          il_6: {
-            name: "IL-6",
-            units: "pg/ml",
-            value: null,
-            type: "number",
-          },
-          ferritin: {
-            name: "Ferritina",
-            units: "mcg/L",
-            value: null,
-            type: "number",
-          },
-          troponin: {
-            name: "LDH",
-            units: "ng/ml",
-            value: null,
-            type: "number",
-          },
-          igm: {
-            name: "LDH",
-            units: "",
-            value: null,
-            type: "number",
-          },
-          igg: {
-            name: "LDH",
-            units: "",
-            value: null,
-            type: "number",
-          },
-        },
-      },
       hematic_biometry: {
         title: "Biometria Hematica",
         fields: {
@@ -243,23 +187,6 @@ export default {
           d_dimer: {
             name: "Dímero D",
             units: "mg/mL",
-            value: null,
-            type: "number",
-          },
-        },
-      },
-      cardiac_enzymes: {
-        title: "Enzimas Cardiacas",
-        fields: {
-          cpk: {
-            name: "CPK",
-            units: "mg/dL",
-            value: null,
-            type: "number",
-          },
-          mioglobin: {
-            name: "Mioglobina",
-            units: "ng/ml",
             value: null,
             type: "number",
           },

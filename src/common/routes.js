@@ -51,6 +51,12 @@ const routes = [
         component: () => import(/* webpackChunkName: "Triage" */ "../views/Triage"),
       },
       {
+        path: "covid",
+        name: "covid",
+        meta: { title: 'Covid', back: true },
+        component: () => import(/* webpackChunkName: "Covid" */ "../views/Covid"),
+      },
+      {
         path: "probability",
         name: "probability",
         meta: { title: 'Probability', back: true },
