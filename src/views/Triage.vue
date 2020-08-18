@@ -65,7 +65,7 @@
             rounded
             @click="goToLabs()"
             :disabled="invalid"
-          >Laboratorios</v-btn>
+          >Laboratorios de COVID-19</v-btn>
         </div>
         <div class="d-flex justify-center">
           <v-btn color="primary" x-large rounded @click="goToPrediction()" :disabled="invalid">
