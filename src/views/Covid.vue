@@ -21,7 +21,7 @@
           ></v-select>
         </template>
         <div class="d-flex justify-center">
-          <v-btn color="primary" x-large rounded @click="submitVitalSigns()" :disabled="invalid">
+          <v-btn color="primary" x-large rounded @click="submitCovid()" :disabled="invalid">
             <v-icon left large dark>mdi-chevron-right</v-icon>Laboratorios
           </v-btn>
         </div>
