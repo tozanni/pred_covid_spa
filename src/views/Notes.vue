@@ -25,7 +25,7 @@
       </div>
       <div class="spacer"></div>
       <div class="d-flex justify-center">
-        <v-btn color="primary" x-large rounded @click="submitNotesAndRedirect('prediction')">
+        <v-btn color="primary" x-large rounded @click="submitNotesAndRedirect('probability')">
           <v-icon left large dark>mdi-chevron-right</v-icon>Calcular probabilidad rcp
         </v-btn>
       </div>
