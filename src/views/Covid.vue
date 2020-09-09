@@ -33,6 +33,7 @@
 <script>
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import { mapState, mapActions } from "vuex";
+import { HTTP } from "../http-common";
 export default {
   components: {
     ValidationObserver,
