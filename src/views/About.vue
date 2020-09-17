@@ -9,7 +9,6 @@
             <a href="https://usaria.mx" target="_blank"><img src="build/images/logos/usaria_logo.png" class="mx-4 my-4" height="80" alt="Usaria"></a>
             <a href="https://www.edenred.mx/" target="_blank"><img src="build/images/logos/edenred_logo.png" class="mx-4 my-4" height="80" alt="Usaria"></a>
             <img src="build/images/logos/Logo-AP-HP-quadri-Converti.png" class="mx-4 my-4" height="80" alt="Assistance Publique Hôspitaux de Paris">
-            <img src="build/images/logos/mit_logo.png" class="mx-4 my-4" height="80" alt="">
         </div>
         <p>
             <strong>Sobre el proyecto:</strong> En el Tec de Monterrey queremos desarrollar una
