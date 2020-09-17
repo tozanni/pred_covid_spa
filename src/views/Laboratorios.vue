@@ -57,6 +57,12 @@ export default {
             value: null,
             type: "number",
           },
+          neutrophils: {
+            name: "Neutrófilos",
+            units: "cels./uL",
+            value: null,
+            type: "number",
+          },
           lymphocytes: {
             name: "Linfocitos",
             units: "cels./uL",
