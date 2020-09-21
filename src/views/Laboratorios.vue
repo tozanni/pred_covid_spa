@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <ValidationObserver slim v-slot="{ invalid }">
     <v-form>
       <p class="teal--text text-center">
         LLENE LA MAYOR CANTIDAD DE LABORATORIOS PARA MAYOR PRECISIÓN EN LAS
@@ -17,11 +18,12 @@
       </v-expansion-panels>
       <div class="spacer"></div>
       <div class="d-flex justify-center">
-        <v-btn color="primary" x-large rounded @click="submitLaboratories()">
+        <v-btn color="primary" x-large rounded @click="submitLaboratories()"  :disabled="invalid">
           <v-icon left large dark>mdi-chevron-right</v-icon>Calcular probabilidad rcp
         </v-btn>
       </div>
     </v-form>
+    </ValidationObserver>
   </v-container>
 </template>
 
@@ -29,10 +31,12 @@
 import LabPanel from "../components/LabPanel.vue";
 import { mapState, mapActions } from "vuex";
 import { HTTP } from "../http-common";
+import { ValidationObserver } from "vee-validate";
 
 export default {
   components: {
     LabPanel,
+    ValidationObserver
   },
   data: () => ({
     labs: {
@@ -56,18 +60,21 @@ export default {
             units: "cels./uL",
             value: null,
             type: "number",
+            rules: "biometry:@leukocytes,@neutrophils,@lymphocytes"
           },
           neutrophils: {
             name: "Neutrófilos",
             units: "cels./uL",
             value: null,
             type: "number",
+            rules: "biometry:@leukocytes,@neutrophils,@lymphocytes"
           },
           lymphocytes: {
             name: "Linfocitos",
             units: "cels./uL",
             value: null,
             type: "number",
+            rules: "biometry:@leukocytes,@neutrophils,@lymphocytes"
           },
           platelets: {
             name: "Plaquetas",

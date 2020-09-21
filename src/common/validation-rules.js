@@ -6,5 +6,15 @@ import * as rules from 'vee-validate/dist/rules';
 Object.keys(rules).forEach(rule => {
     extend(rule, rules[rule]);
 });
+
+
+extend('biometry', {
+    params: ['leukocytes', 'neutrophils' , 'lymphocytes'],
+    validate(value, { leukocytes, neutrophils, lymphocytes }) {
+      return !!leukocytes && !!neutrophils && !!lymphocytes;
+    },
+    message: 'Los campos "Leucocitos", "Neutrófilos", "Linfocitos deben ir acompañados"'
+  });
+
 localize("es", es);
 
