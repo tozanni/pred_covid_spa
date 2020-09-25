@@ -166,7 +166,7 @@ export default {
       "setProbability",
     ]),
   },
-  created() {
+  mounted() {
     if (this.uuid === undefined) {
       this.showForm = true;
       this.clearRecord();

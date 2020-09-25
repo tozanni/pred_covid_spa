@@ -1,15 +1,10 @@
 <template>
 <v-container>
-  <v-form>
-    <v-text-field label="Correo" outlined readonly></v-text-field>
-    <v-text-field label="Contraseña" outlined readonly></v-text-field>
+  <v-form class="text-center mt-16">
+    <v-text-field label="Correo" outlined></v-text-field>
+    <v-text-field label="Contraseña" outlined></v-text-field>
     <v-btn :to="{ name: 'home' }" color="primary" x-large rounded>
       iniciar sesion
-    </v-btn>
-    <br />
-    <br />
-    <v-btn :to="{ name: 'registration' }" color="primary" x-large text>
-      registrarme
     </v-btn>
   </v-form>
 </v-container>
