@@ -40,7 +40,7 @@
 <script>
 import ProbabilityVue from "../components/Probability.vue";
 import { mapState, mapActions } from "vuex";
-import { HTTP } from "../http-common";
+import HTTP from "../http-common";
 import moment from "moment/moment";
 import { getSymptomName, getComorbidityName } from "../common/triageLists";
 

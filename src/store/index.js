@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import createPersistedState from "vuex-persistedstate";
 
 import record from "./modules/record";
+import security from "./modules/security";
 
 Vue.use(Vuex);
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    record
+    record,
+    security
   },
   plugins: [createPersistedState()],
 })

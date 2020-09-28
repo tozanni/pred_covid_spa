@@ -79,7 +79,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { HTTP } from "../http-common";
+import HTTP from "../http-common";
 import { symptomsList, comorbiditiesList } from "../common/triageLists";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 

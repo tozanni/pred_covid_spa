@@ -113,7 +113,7 @@ import CardLink from "../components/CardLink.vue";
 import moment from "moment/moment";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import "../common/validation-rules";
-import { HTTP } from "../http-common";
+import HTTP from "../http-common";
 import { mapState, mapActions } from "vuex";
 
 export default {
@@ -174,6 +174,6 @@ export default {
       this.fetchRecord(this.uuid);
       this.setProbability(0);
     }
-  },
+  }
 };
 </script>

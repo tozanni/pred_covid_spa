@@ -10,8 +10,8 @@
       <v-divider></v-divider>
       <NavigationList />
       <template v-slot:append>
-        <div class="pa-2">
-          <v-btn color="light-blue darken-4 white--text" block>
+        <div class="pa-2" v-if="isAuthenticated">
+          <v-btn color="light-blue darken-4 white--text" :href="logoutLink" block>
             <v-icon left>mdi-exit-to-app</v-icon>Cerrar Sesión
           </v-btn>
         </div>
@@ -31,7 +31,6 @@
     </v-app-bar>
     <v-main>
       <router-view :key="$route.path" />
-
       <v-snackbar v-model="snackbar" color="#48bb78">
         {{ text }}
         <template v-slot:action="{ attrs }">
@@ -45,7 +44,7 @@
 <script>
 import NavigationList from "./components/NavigationList";
 
-import { mapState, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "App",
@@ -55,13 +54,17 @@ export default {
   data: () => ({
     drawer: null,
     text: '',
-    snackbar: false
+    snackbar: false,
+    logoutLink: process.env.API_REST+'api/security/logout'
   }),
   methods: {
     openSnackbar(text) {
       this.text = text;
       this.snackbar = true;
     }
+  },
+  computed: {
+    ...mapGetters("security", ["isAuthenticated"])
   },
   watch: {
     $route(to,from) {

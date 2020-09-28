@@ -1,7 +1,7 @@
-import { HTTP } from "../../http-common";
+import HTTP from "../../http-common";
 import moment from "moment/moment";
 
-const record = {
+export default {
     namespaced: true,
     state: {
         record: null,
@@ -60,5 +60,3 @@ const record = {
         },
     }
 };
-
-export default record;

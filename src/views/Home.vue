@@ -3,7 +3,7 @@
     <div class="main">
       <p>Pagina para calcular sin iniciar sesion</p>
       <p>No guarda los datos del paciente</p>
-      <v-btn color="primary" x-large rounded :to="{name: 'medicalRecord'}">
+      <v-btn color="primary" x-large rounded :to="{ name: 'medicalRecord' }">
         <v-icon left large dark>mdi-plus</v-icon>
         Calcular Riesgo RcP
       </v-btn>
@@ -12,12 +12,12 @@
       <p>
         Inicia sesion con una cuenta para llevar un historial de los pacientes
       </p>
-      <v-btn :to="{name: 'login'}" color="primary" x-large rounded>
+      <v-btn :to="{ name: 'login' }" color="primary" x-large rounded>
         iniciar sesion
       </v-btn>
       <br />
       <br />
-      <v-btn :to="{name: 'registration'}" color="primary" x-large text>
+      <v-btn :to="{ name: 'registration' }" color="primary" x-large text>
         registrarme
       </v-btn>
     </div>
@@ -25,9 +25,13 @@
 </template>
 
 <script>
+import HTTP from "../http-common";
 export default {
   name: "Home",
   components: {},
+  created() {
+    console.log(HTTP.defaults.withCredentials);
+  },
 };
 </script>
 

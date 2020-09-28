@@ -175,7 +175,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { HTTP } from "../http-common";
+import HTTP from "../http-common";
 import moment from "moment/moment";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import "../common/validation-rules";

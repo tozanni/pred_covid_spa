@@ -51,7 +51,7 @@
 <script>
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import "../common/validation-rules";
-import { HTTP } from "../http-common";
+import HTTP from "../http-common";
 
 export default {
   components: {
