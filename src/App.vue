@@ -16,12 +16,14 @@
           <v-avatar color="primary" size="32"
             ><v-icon dark> mdi-account-circle </v-icon></v-avatar
           >
-          <span class="d-block pb-3 text-uppercase text-lg-h6 font-weight-medium">
+          <span
+            class="d-block pb-3 text-uppercase text-lg-h6 font-weight-medium"
+          >
             {{ user.username }}
           </span>
           <v-btn
-            color="light-blue darken-4 white--text"
-            :href="logoutLink"
+          color="light-blue darken-4 white--text"
+            @click="logout"
             block
           >
             <v-icon left>mdi-exit-to-app</v-icon>Cerrar Sesión
@@ -76,6 +78,10 @@ export default {
     openSnackbar(text) {
       this.text = text;
       this.snackbar = true;
+    },
+    logout() {
+      this.$store.dispatch("security/logout");
+      this.$router.push({ name: "home" });
     },
   },
   computed: {

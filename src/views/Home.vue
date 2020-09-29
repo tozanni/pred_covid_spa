@@ -8,27 +8,31 @@
         Calcular Riesgo RcP
       </v-btn>
     </div>
-    <div class="login">
+    <div class="login" v-if="!isAuthenticated">
       <p>
         Inicia sesion con una cuenta para llevar un historial de los pacientes
       </p>
       <v-btn :to="{ name: 'login' }" color="primary" x-large rounded>
         iniciar sesion
       </v-btn>
-      <br />
+      <!-- <br />
       <br />
       <v-btn :to="{ name: 'registration' }" color="primary" x-large text>
         registrarme
-      </v-btn>
+      </v-btn> -->
     </div>
   </div>
 </template>
 
 <script>
 import HTTP from "../http-common";
+import { mapGetters } from "vuex";
 export default {
   name: "Home",
   components: {},
+  computed: {
+    ...mapGetters("security", ["isAuthenticated"]),
+  },
   created() {
     console.log(HTTP.defaults.withCredentials);
   },

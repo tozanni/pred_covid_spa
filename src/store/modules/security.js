@@ -35,13 +35,20 @@ export default {
             state.isAuthenticated = false;
             state.user = null;
         },
+        LOGOUT(state) {
+            state.isLoading = false;
+            state.error = null;
+            state.isAuthenticated = false;
+            state.user = null;
+            state.token = null;
+        },
         AUTHENTICATING_SUCCESS(state, jwt) {
             state.isLoading = false;
             state.error = null;
             state.isAuthenticated = true;
             state.token = jwt.token;
-
-            let base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+            
+            let base64 = state.token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
 
             let jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
@@ -67,6 +74,9 @@ export default {
             }).catch(error => {
                 commit("AUTHENTICATING_ERROR", error);
             })
+        },
+        logout({ commit }) {
+            commit("LOGOUT");
         }
     },
 };
