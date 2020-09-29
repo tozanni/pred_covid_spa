@@ -4,7 +4,7 @@ node_modules
 /public/build
 
 # local env files
-.env.*.local
+.env
 
 # Log files
 npm-debug.log*
