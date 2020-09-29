@@ -50,7 +50,7 @@ export default {
       if (typeof redirect !== "undefined") {
         this.$router.push({ path: redirect });
       } else {
-        this.$router.push({ path: "/home" });
+        this.$router.push({ name: "home" });
       }
     },
   },

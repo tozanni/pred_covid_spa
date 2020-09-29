@@ -6,7 +6,8 @@ export default {
         isLoading: false,
         error: null,
         isAuthenticated: false,
-        user: null
+        user: null,
+        token: null
     },
     getters: {
         isLoading(state) {
@@ -34,11 +35,19 @@ export default {
             state.isAuthenticated = false;
             state.user = null;
         },
-        AUTHENTICATING_SUCCESS(state, user) {
+        AUTHENTICATING_SUCCESS(state, jwt) {
             state.isLoading = false;
             state.error = null;
             state.isAuthenticated = true;
-            state.user = user;
+            state.token = jwt.token;
+
+            let base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+
+            let jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+
+            state.user = JSON.parse(jsonPayload);
         },
         AUTHENTICATING_ERROR(state, error) {
             state.isLoading = false;
@@ -54,7 +63,7 @@ export default {
                 username: payload.login,
                 password: payload.password
             }).then(res => {
-                commit("AUTHENTICATING_SUCCESS", response.data);
+                commit("AUTHENTICATING_SUCCESS", res.data);
             }).catch(error => {
                 commit("AUTHENTICATING_ERROR", error);
             })

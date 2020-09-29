@@ -4,14 +4,26 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">Covid 19</v-list-item-title>
-          <v-list-item-subtitle>Calculadora de Probabilidad RcP</v-list-item-subtitle>
+          <v-list-item-subtitle
+            >Calculadora de Probabilidad RcP</v-list-item-subtitle
+          >
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
       <NavigationList />
       <template v-slot:append>
-        <div class="pa-2" v-if="isAuthenticated">
-          <v-btn color="light-blue darken-4 white--text" :href="logoutLink" block>
+        <div class="pa-2 text-center" v-if="isAuthenticated">
+          <v-avatar color="primary" size="32"
+            ><v-icon dark> mdi-account-circle </v-icon></v-avatar
+          >
+          <span class="d-block pb-3 text-uppercase text-lg-h6 font-weight-medium">
+            {{ user.username }}
+          </span>
+          <v-btn
+            color="light-blue darken-4 white--text"
+            :href="logoutLink"
+            block
+          >
             <v-icon left>mdi-exit-to-app</v-icon>Cerrar Sesión
           </v-btn>
         </div>
@@ -21,11 +33,14 @@
       <router-link
         v-show="$route.meta.back"
         icon
-        :to="{name: 'medicalRecord', params: {uuid: $route.params.uuid}}"
+        :to="{ name: 'medicalRecord', params: { uuid: $route.params.uuid } }"
       >
         <v-icon x-large>mdi-chevron-left</v-icon>
       </router-link>
-      <v-app-bar-nav-icon v-show="!$route.meta.back" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon
+        v-show="!$route.meta.back"
+        @click.stop="drawer = !drawer"
+      ></v-app-bar-nav-icon>
       <v-toolbar-title>{{ $route.meta.title }}</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
@@ -44,7 +59,7 @@
 <script>
 import NavigationList from "./components/NavigationList";
 
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   name: "App",
@@ -53,26 +68,27 @@ export default {
   },
   data: () => ({
     drawer: null,
-    text: '',
+    text: "",
     snackbar: false,
-    logoutLink: process.env.API_REST+'api/security/logout'
+    logoutLink: process.env.API_REST + "api/security/logout",
   }),
   methods: {
     openSnackbar(text) {
       this.text = text;
       this.snackbar = true;
-    }
+    },
   },
   computed: {
-    ...mapGetters("security", ["isAuthenticated"])
+    ...mapGetters("security", ["isAuthenticated"]),
+    ...mapState("security", ["user"]),
   },
   watch: {
-    $route(to,from) {
+    $route(to, from) {
       if (!!this.$route.params.snackbar) {
         this.openSnackbar(this.$route.params.snackbar);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
