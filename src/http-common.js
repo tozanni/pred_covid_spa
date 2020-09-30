@@ -14,6 +14,8 @@ switch (process.env.NODE_ENV) {
 
 const HTTP = axios.create(api_rest);
 
+HTTP.defaults.withCredentials = true;
+
 HTTP.interceptors.response.use(undefined, (err) => {
   return new Promise(() => {
     if (err.response.status === 401) {
@@ -22,5 +24,21 @@ HTTP.interceptors.response.use(undefined, (err) => {
     throw err;
   });
 });
+
+HTTP.interceptors.request.use(
+  (config) => {
+    let token = localStorage.getItem('authtoken');
+
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${ token }`;
+    }
+
+    return config;
+  }, 
+
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export default HTTP;

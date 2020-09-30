@@ -25,16 +25,12 @@
 </template>
 
 <script>
-import HTTP from "../http-common";
 import { mapGetters } from "vuex";
 export default {
   name: "Home",
   components: {},
   computed: {
     ...mapGetters("security", ["isAuthenticated"]),
-  },
-  created() {
-    console.log(HTTP.defaults.withCredentials);
   },
 };
 </script>

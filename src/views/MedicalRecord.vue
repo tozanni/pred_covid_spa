@@ -140,6 +140,7 @@ export default {
       showForm: false,
       menu: false,
       date: new Date().toISOString().substr(0, 10),
+      authtoken: this.$store.state.security.authtoken
     };
   },
   methods: {

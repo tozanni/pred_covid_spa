@@ -7,7 +7,7 @@ export default {
         error: null,
         isAuthenticated: false,
         user: null,
-        token: null
+        authtoken: null
     },
     getters: {
         isLoading(state) {
@@ -40,15 +40,15 @@ export default {
             state.error = null;
             state.isAuthenticated = false;
             state.user = null;
-            state.token = null;
+            state.authtoken = null;
         },
         AUTHENTICATING_SUCCESS(state, jwt) {
             state.isLoading = false;
             state.error = null;
             state.isAuthenticated = true;
-            state.token = jwt.token;
+            state.authtoken = jwt.token;
             
-            let base64 = state.token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+            let base64 = state.authtoken.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
 
             let jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);

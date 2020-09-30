@@ -238,6 +238,7 @@ export default {
         oximetry: null,
         capillary_glucose: null,
       },
+      authtoken: this.$store.state.security.authtoken
     };
   },
   methods: {
