@@ -14,8 +14,6 @@ switch (process.env.NODE_ENV) {
 
 const HTTP = axios.create(api_rest);
 
-HTTP.defaults.withCredentials = true;
-
 HTTP.interceptors.response.use(undefined, (err) => {
   return new Promise(() => {
     if (err.response.status === 401) {
@@ -32,7 +30,7 @@ HTTP.interceptors.request.use(
     if (token) {
       config.headers['Authorization'] = `Bearer ${ token }`;
     }
-
+    console.log(config);
     return config;
   }, 
 
