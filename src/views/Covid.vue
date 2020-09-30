@@ -130,6 +130,17 @@ export default {
       "setRecord",
     ]),
   },
+  mounted() {
+    if (this.record && this.record.covid) {
+      this.form.fields.pcr.value = this.record.covid.pcr;
+      this.form.fields.ldh.value = this.record.covid.ldh;
+      this.form.fields.il_6.value = this.record.covid.il_6;
+      this.form.fields.ferritin.value = this.record.covid.ferritin;
+      this.form.fields.troponin.value = this.record.covid.troponin;
+      this.form.fields.igm.value = this.record.covid.igm;
+      this.form.fields.igg.value = this.record.covid.igg;
+    }
+  }
 };
 </script>
 
