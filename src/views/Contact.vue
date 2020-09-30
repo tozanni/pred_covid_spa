@@ -51,7 +51,6 @@
 <script>
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import "../common/validation-rules";
-import HTTP from "../http-common";
 
 export default {
   components: {
@@ -76,7 +75,7 @@ export default {
   },
   methods: {
     submit() {
-      HTTP.post('contact', this.form)
+      this.$http.post('contact', this.form)
         .then((res) => {
           this.$router.push({
             name: "home",

@@ -30,7 +30,6 @@
 <script>
 import LabPanel from "../components/LabPanel.vue";
 import { mapState, mapActions } from "vuex";
-import HTTP from "../http-common";
 import { ValidationObserver } from "vee-validate";
 
 export default {
@@ -354,7 +353,7 @@ export default {
   },
   methods: {
     submitLaboratories() {
-      HTTP.put(`records/${this.record.id}`, this.labsObject)
+      this.$http.put(`records/${this.record.id}`, this.labsObject)
         .then((res) => {
           this.setRecord(res.data);
           this.$router.push({

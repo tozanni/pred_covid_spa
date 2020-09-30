@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import HTTP from "../http-common";
 import { mapState, mapActions } from "vuex";
 
 export default {
@@ -61,7 +60,7 @@ export default {
   },
   methods: {
     submitNotesAndRedirect(route) {
-      HTTP.put(`records/${this.record.id}`, this.medicalNotes)
+      this.$http.put(`records/${this.record.id}`, this.medicalNotes)
         .then((res) => {
           this.setRecord(res.data);
           this.$router.push({

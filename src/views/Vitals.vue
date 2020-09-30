@@ -175,7 +175,6 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import HTTP from "../http-common";
 import moment from "moment/moment";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import "../common/validation-rules";
@@ -243,7 +242,7 @@ export default {
   },
   methods: {
     submitVitalSigns() {
-      HTTP.put(`records/${this.record.id}`, this.vitalsObject)
+      this.$http.put(`records/${this.record.id}`, this.vitalsObject)
         .then((res) => {
           this.setRecord(res.data);
           this.$router.push({

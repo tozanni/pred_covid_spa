@@ -113,7 +113,6 @@ import CardLink from "../components/CardLink.vue";
 import moment from "moment/moment";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import "../common/validation-rules";
-import HTTP from "../http-common";
 import { mapState, mapActions } from "vuex";
 
 export default {
@@ -140,14 +139,13 @@ export default {
       showForm: false,
       menu: false,
       date: new Date().toISOString().substr(0, 10),
-      authtoken: this.$store.state.security.authtoken
     };
   },
   methods: {
     submitRecord() {
-      HTTP.post("records", {
+      this.$http.post("records", {
         admission_date: this.dateFormatted,
-        status: this.status,
+        status: null,
       })
         .then((res) => {
           this.setRecord(res.data);

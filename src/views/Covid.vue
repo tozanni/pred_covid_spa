@@ -33,7 +33,6 @@
 <script>
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import { mapState, mapActions } from "vuex";
-import HTTP from "../http-common";
 export default {
   components: {
     ValidationObserver,
@@ -117,7 +116,7 @@ export default {
   },
   methods: {
     submitCovid() {
-      HTTP.put(`records/${this.record.id}`, this.covidObject)
+      ths.$http.put(`records/${this.record.id}`, this.covidObject)
         .then((res) => {
           this.setRecord(res.data);
           this.$router.push({

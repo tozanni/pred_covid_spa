@@ -23,20 +23,4 @@ HTTP.interceptors.response.use(undefined, (err) => {
   });
 });
 
-HTTP.interceptors.request.use(
-  (config) => {
-    let token = localStorage.getItem('authtoken');
-
-    if (token) {
-      config.headers['Authorization'] = `Bearer ${ token }`;
-    }
-    console.log(config);
-    return config;
-  }, 
-
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
 export default HTTP;

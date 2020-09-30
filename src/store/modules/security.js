@@ -7,7 +7,7 @@ export default {
         error: null,
         isAuthenticated: false,
         user: null,
-        authtoken: null
+        authtoken: localStorage.getItem('authtoken') || '',
     },
     getters: {
         isLoading(state) {
@@ -47,7 +47,7 @@ export default {
             state.error = null;
             state.isAuthenticated = true;
             state.authtoken = jwt.token;
-            
+
             let base64 = state.authtoken.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
 
             let jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
@@ -61,6 +61,7 @@ export default {
             state.error = error;
             state.isAuthenticated = false;
             state.user = null;
+            state.authtoken = null
         }
     },
     actions: {
@@ -71,12 +72,19 @@ export default {
                 password: payload.password
             }).then(res => {
                 commit("AUTHENTICATING_SUCCESS", res.data);
+
+                HTTP.defaults.headers.common['Authorization'] = res.data.token
+                localStorage.setItem('authtoken', res.data.token);
             }).catch(error => {
                 commit("AUTHENTICATING_ERROR", error);
+                localStorage.removeItem('authtoken');
+                delete HTTP.defaults.headers.common['Authorization'];
             })
         },
         logout({ commit }) {
             commit("LOGOUT");
+            localStorage.removeItem('authtoken');
+            delete HTTP.defaults.headers.common['Authorization'];
         }
     },
 };

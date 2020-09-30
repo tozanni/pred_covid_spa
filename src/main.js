@@ -4,9 +4,16 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
+import HTTP from './http-common'
 
 Vue.config.productionTip = false;
 
+
+Vue.prototype.$http = HTTP;
+const token = localStorage.getItem('authtoken')
+if (token) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
 
 new Vue({
   router,

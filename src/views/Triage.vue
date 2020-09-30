@@ -79,7 +79,6 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import HTTP from "../http-common";
 import { symptomsList, comorbiditiesList } from "../common/triageLists";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 
@@ -128,7 +127,7 @@ export default {
   },
   methods: {
     submitTriageSigns(route) {
-      HTTP.put(`records/${this.record.id}`, this.triageObject)
+      this.$http.put(`records/${this.record.id}`, this.triageObject)
         .then(res => {
           this.setRecord(res.data);
           this.$router.push({
