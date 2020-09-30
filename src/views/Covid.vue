@@ -116,7 +116,7 @@ export default {
   },
   methods: {
     submitCovid() {
-      ths.$http.put(`records/${this.record.id}`, this.covidObject)
+      this.$http.put(`records/${this.record.id}`, this.covidObject)
         .then((res) => {
           this.setRecord(res.data);
           this.$router.push({

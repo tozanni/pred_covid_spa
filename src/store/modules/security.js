@@ -73,7 +73,7 @@ export default {
             }).then(res => {
                 commit("AUTHENTICATING_SUCCESS", res.data);
 
-                HTTP.defaults.headers.common['Authorization'] = res.data.token
+                HTTP.defaults.headers.common['Authorization'] = "Bearer " + res.data.token
                 localStorage.setItem('authtoken', res.data.token);
             }).catch(error => {
                 commit("AUTHENTICATING_ERROR", error);
