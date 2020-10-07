@@ -8,7 +8,7 @@
         Calcular Riesgo RcP
       </v-btn>
     </div>
-    <div class="login" v-if="!isAuthenticated">
+    <div class="login" v-if="!isAuthenticated || isAnonymous">
       <p>
         Inicia sesion con una cuenta para llevar un historial de los pacientes
       </p>
@@ -30,7 +30,7 @@ export default {
   name: "Home",
   components: {},
   computed: {
-    ...mapGetters("security", ["isAuthenticated"]),
+    ...mapGetters("security", ["isAuthenticated", "isAnonymous"]),
   },
 };
 </script>

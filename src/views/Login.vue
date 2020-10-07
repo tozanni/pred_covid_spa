@@ -27,10 +27,11 @@ export default {
       "hasError",
       "error",
       "isAuthenticated",
+      "isAnonymous",
     ]),
   },
   created() {
-    if (this.isAuthenticated) {
+    if (this.isAuthenticated && !this.isAnonymous) {
       this.redirect();
     }
   },

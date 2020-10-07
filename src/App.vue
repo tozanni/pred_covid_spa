@@ -12,7 +12,7 @@
       <v-divider></v-divider>
       <NavigationList />
       <template v-slot:append>
-        <div class="pa-2 text-center" v-if="isAuthenticated">
+        <div class="pa-2 text-center" v-if="isAuthenticated && !isAnonymous">
           <v-avatar color="primary" size="32"
             ><v-icon dark> mdi-account-circle </v-icon></v-avatar
           >
@@ -85,7 +85,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("security", ["isAuthenticated"]),
+    ...mapGetters("security", ["isAuthenticated", "isAnonymous"]),
     ...mapState("security", ["user"]),
   },
   watch: {
