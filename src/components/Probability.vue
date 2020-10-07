@@ -42,11 +42,8 @@ export default {
   computed: {
     admissionFromNow() {
       moment.updateLocale("es");
-      const admissionDate = moment(this.admission_date);
-      if (moment().diff(admissionDate, "hours") < 21) {
-        return "Hoy";
-      }
-      return moment(this.admission_date).fromNow();
+      const admissionDate = moment(this.admissionDate);
+      return moment(this.admissionDate).fromNow();
     },
     colorCode() {
       return this.probability <= 30

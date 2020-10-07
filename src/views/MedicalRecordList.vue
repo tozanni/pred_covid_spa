@@ -44,7 +44,6 @@ export default {
     moment.locale("es");
   },
   methods: {
-    fromNow: (date) => moment(date).fromNow(),
     ...mapActions("record", ["loadRecords"]),
   },
 };
