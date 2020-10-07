@@ -13,7 +13,7 @@
       <br />
       <span class="text--secondary caption">Ingreso: {{admissionFromNow}}</span>
       <br />
-      <span class="text--secondary caption">Probabilidad que requirea RcP</span>
+      <span class="text--secondary caption" v-if="probability">Probabilidad que requirea RcP</span>
     </div>
   </div>
 </template>

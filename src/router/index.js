@@ -2,9 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import routes from "../common/routes";
 import store from "../store";
+import record from "../store/modules/record";
 
 Vue.use(VueRouter);
-
 
 const router = new VueRouter({
   mode: "history",
@@ -12,24 +12,33 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  
-  console.log(to);
-  console.log(to.matched);
-
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.anonymous)) {
+    // this route allows anonymous users
+    if (store.getters["security/isAnonymous"]) {
+      next();
+    } else {
+      next({
+        path: "/home",
+      });
+    }
+  } else if (to.matched.some((record) => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (store.getters["security/isAuthenticated"]) {
+    if (store.getters["security/isAuthenticated"] && !store.getters["security/isAnonymous"]) {
       next();
     } else {
       next({
         path: "/login",
-        query: { redirect: to.fullPath }
+        query: { redirect: to.fullPath },
       });
     }
-  }
-  else if(to.name == 'medicalRecord' && !store.getters["security/isAuthenticated"]) {
-    store.dispatch("security/loginAsAnonymous")
+  } else if (
+    to.name == "medicalRecord" &&
+    !store.getters["security/isAuthenticated"]
+  ) {
+    // User wants to create a record but is not authenticated
+    // login as anonymous
+    store.dispatch("security/loginAsAnonymous");
     next();
   } else {
     next(); // make sure to always call next()!

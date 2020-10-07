@@ -1,38 +1,51 @@
 <template>
-    <div>
-        <ul v-if="medicalRecords && medicalRecords.length">
-            <li v-for="record of medicalRecords" :key="record.id">
-                <p><strong>{{record.id}}</strong></p>
-                <p>{{record.status}}</p>
-            </li>
-        </ul>
-
-        <ul v-if="errors && errors.length">
-            <li v-for="error of errors" :key="error">
-                {{error.message}}
-            </li>
-        </ul>
-    </div>
+  <div>
+    <v-list v-if="pagination && pagination.items.length" two-line>
+      <v-subheader>REPORTS</v-subheader>
+          <v-divider
+            light
+          ></v-divider>
+      <v-list-item-group multiple>
+        <template v-for="(record, index) in pagination.items">
+          <v-list-item :key="record.id" :to="{name: 'medicalRecord', params: {uuid: record.id}}">
+            <v-list-item-content>
+              <Probability
+                :uuid="record.id"
+                :admission-date="record.admission_date"
+              />
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider
+            :key="index"
+            light
+          ></v-divider>
+        </template>
+      </v-list-item-group>
+    </v-list>
+  </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 import moment from "moment";
 import RecordStatus from "../components/RecordStatus";
+import Probability from "../components/Probability.vue";
 
 export default {
   components: {
     RecordStatus,
+    Probability,
   },
   computed: {
-    ...mapState("records", ["records"]),
+    ...mapState("record", ["pagination"]),
   },
   created() {
-    this.$store.dispatch("records/loadRecords");
+    this.$store.dispatch("record/loadRecords");
     moment.locale("es");
   },
   methods: {
     fromNow: (date) => moment(date).fromNow(),
+    ...mapActions("record", ["loadRecords"]),
   },
 };
 </script>
