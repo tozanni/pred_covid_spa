@@ -1,6 +1,9 @@
 <template>
   <v-container class="div">
-    <ValidationObserver v-if="showForm && persisted === false" v-slot="{ invalid }">
+    <ValidationObserver
+      v-if="showForm && persisted === false"
+      v-slot="{ invalid }"
+    >
       <v-form @submit.prevent>
         <h2>Crear Nuevo Expediente</h2>
         <span>Captura la fecha de ingreso para agregar un nuevo registro</span>
@@ -16,7 +19,7 @@
           <template v-slot:activator="{ on, attrs }">
             <ValidationProvider
               name="required"
-              :rules="{required: true}"
+              :rules="{ required: true }"
               v-slot="{ errors, valid }"
             >
               <v-text-field
@@ -34,10 +37,23 @@
           </template>
           <v-date-picker v-model="date" no-title scrollable>
             <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
             <v-btn text color="primary" @click="menu = false">Cancelar</v-btn>
-            <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+            <v-btn text color="primary" @click="$refs.menu.save(date)"
+              >OK</v-btn
+            >
           </v-date-picker>
         </v-menu>
+        <ValidationProvider
+          v-if="isAuthenticated && !isAnonymous"
+          name="id_canonical"
+        >
+          <v-text-field
+            label="Canonical Id"
+            v-model="id_canonical"
+            type="text"
+          ></v-text-field>
+        </ValidationProvider>
         <div class="d-flex justify-center">
           <v-btn color="primary" @click="submitRecord()" :disabled="invalid">
             <v-icon left large dark>mdi-plus</v-icon>Nuevo Registro
@@ -46,7 +62,12 @@
         <div class="spacer"></div>
       </v-form>
     </ValidationObserver>
-    <v-row v-if="record" v-show="$route.name !== 'probability'" align="center" justify="center">
+    <v-row
+      v-if="record"
+      v-show="$route.name !== 'probability'"
+      align="center"
+      justify="center"
+    >
       <v-col xs="12" sm="6" cols="12">
         <Probability
           :probability="probability"
@@ -70,36 +91,42 @@
       <CardLink
         title="Signos Vitales"
         :subtitle="record.vital_signs ? 'Completado' : ''"
-        :to="{name: 'vitals', params: {uuid}}"
+        :to="{ name: 'vitals', params: { uuid } }"
         :disabled="showForm"
       />
       <CardLink
         title="Triage"
         :subtitle="record.triage ? 'Completado' : ''"
-        :to="{name: 'triage', params: {uuid}}"
+        :to="{ name: 'triage', params: { uuid } }"
         :disabled="!record.vital_signs"
       />
       <CardLink
         title="Extras para COVID-19"
         :subtitle="record.covid ? 'Completado' : ''"
-        :to="{name: 'covid', params: {uuid}}"
+        :to="{ name: 'covid', params: { uuid } }"
         :disabled="!record.vital_signs"
       />
       <CardLink
         title="Laboratorios"
         :subtitle="record.labs ? 'Completado' : ''"
-        :to="{name: 'labs', params: {uuid}}"
+        :to="{ name: 'labs', params: { uuid } }"
         :disabled="!record.triage"
       />
       <CardLink
         title="Notas Medicas"
         :subtitle="record.medical_notes ? 'Completado' : ''"
-        :to="{name: 'notes', params: {uuid}}"
+        :to="{ name: 'notes', params: { uuid } }"
         :disabled="!record.vital_signs"
       />
       <div v-if="record.triage" class="d-flex justify-center">
-        <v-btn color="primary" x-large rounded :to="{name: 'probability', params: { uuid: this.record.id }}">
-          <v-icon left large dark>mdi-chevron-right</v-icon>Calcular probabilidad rcp
+        <v-btn
+          color="primary"
+          x-large
+          rounded
+          :to="{ name: 'probability', params: { uuid: this.record.id } }"
+        >
+          <v-icon left large dark>mdi-chevron-right</v-icon>Calcular
+          probabilidad rcp
         </v-btn>
       </div>
     </template>
@@ -113,7 +140,7 @@ import CardLink from "../components/CardLink.vue";
 import moment from "moment/moment";
 import { ValidationProvider, ValidationObserver } from "vee-validate";
 import "../common/validation-rules";
-import { mapState, mapActions } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 
 export default {
   computed: {
@@ -121,6 +148,7 @@ export default {
       return this.date ? moment(this.date).format("YYYY-MM-DD HH:mm:ss") : "";
     },
     ...mapState("record", ["record", "persisted", "probability"]),
+    ...mapGetters("security", ["isAuthenticated", "isAnonymous"]),
   },
   components: {
     Probability,
@@ -139,14 +167,17 @@ export default {
       showForm: false,
       menu: false,
       date: new Date().toISOString().substr(0, 10),
+      id_canonical: "",
     };
   },
   methods: {
     submitRecord() {
-      this.$http.post("records", {
-        admission_date: this.dateFormatted,
-        status: null,
-      })
+      this.$http
+        .post("records", {
+          admission_date: this.dateFormatted,
+          id_canonical: this.id_canonical,
+          status: null,
+        })
         .then((res) => {
           this.setRecord(res.data);
           this.setProbability(0);
@@ -173,6 +204,6 @@ export default {
       this.fetchRecord(this.uuid);
       this.setProbability(0);
     }
-  }
+  },
 };
 </script>
