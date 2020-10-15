@@ -22,10 +22,10 @@ router.beforeEach((to, from, next) => {
     if (store.getters["security/isAuthenticated"] && !store.getters["security/isAnonymous"]) {
       next();
     } else {
-      /* next({
+      next({
         path: "/login",
         query: { redirect: to.fullPath },
-      }); */
+      });
     }
   } else if (
     to.name == "medicalRecord" &&
@@ -34,9 +34,9 @@ router.beforeEach((to, from, next) => {
     // User wants to create a record but is not authenticated
     // login as anonymous
     store.dispatch("security/loginAsAnonymous");
-    //next();
+    next();
   } else {
-    //next(); // make sure to always call next()!
+    next(); // make sure to always call next()!
   }
 });
 
