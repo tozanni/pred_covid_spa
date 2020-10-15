@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from "./router";
 
 let api_rest = {};
 switch (process.env.NODE_ENV) {
@@ -17,7 +18,7 @@ const HTTP = axios.create(api_rest);
 HTTP.interceptors.response.use(undefined, (err) => {
   return new Promise(() => {
     if (err.response.status === 401) {
-      this.$router.push({path: "/login"})
+      router.push({name: "login"})
     }
     throw err;
   });
