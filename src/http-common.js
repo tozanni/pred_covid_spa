@@ -18,7 +18,7 @@ const HTTP = axios.create(api_rest);
 HTTP.interceptors.response.use(undefined, (err) => {
   return new Promise(() => {
     if (err.response.status === 401) {
-      router.push({name: "login"})
+      //router.push({name: "login"})
     }
     throw err;
   });
