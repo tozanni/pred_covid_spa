@@ -49,7 +49,7 @@
           name="id_canonical"
         >
           <v-text-field
-            label="Canonical Id"
+            label="ID Interno del Paciente"
             v-model="id_canonical"
             type="text"
           ></v-text-field>
