@@ -36,7 +36,7 @@ export default {
     },
     uuid: {
       type: String,
-      required: true,
+      required: false,
     }
   },
   computed: {
