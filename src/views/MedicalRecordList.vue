@@ -32,9 +32,6 @@
     </v-list>
   </div>
 </template>
-    </v-list>
-  </div>
-</template>
 
 <script>
 import { mapState, mapActions } from "vuex";
