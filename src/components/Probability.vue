@@ -8,7 +8,7 @@
       :value="probability"
     >{{ probability }}</v-progress-circular>
     <v-progress-circular v-else color="grey darken-1" size="55" width="7" :value="probability">NA</v-progress-circular>
-    <div class="meta-data">
+    <div class="meta-data" v-if="uuid">
       <span class="font-weight-bold">#{{ uuid.substring(0,6) }}</span>
       <br />
       <span class="text--secondary caption">Ingreso: {{admissionFromNow}}</span>

@@ -11,6 +11,7 @@
             <v-list-item-content>
               <Probability
                 :uuid="record.id"
+                :probability="record.probability"
                 :admission-date="record.admission_date"
               />
             </v-list-item-content>
