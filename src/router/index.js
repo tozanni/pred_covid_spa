@@ -11,6 +11,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  console.log(to.matched);
   if (to.matched.some((record) => record.meta.anonymous)) {
     if(!store.getters["security/isAuthenticated"]) {
       store.dispatch("security/loginAsAnonymous");

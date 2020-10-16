@@ -11,6 +11,8 @@ function formatRecord(record) {
   return record;
 }
 
+//TODO: impement infinite scroll with pagination
+
 export default {
   namespaced: true,
   state: {
@@ -18,6 +20,7 @@ export default {
     persisted: false,
     probability: null,
     pagination: null,
+    probabilities: {}
   },
   computed: {},
   mutations: {
@@ -30,6 +33,9 @@ export default {
     },
     SET_PROBABILITY(state, probability) {
       state.probability = probability;
+      if(state.record) {
+        state.probabilities[state.record.uuid] = probability;
+      }
     },
     UPDATE_RECORD(state, payload) {
       state.record = { ...state.record, ...payload };
