@@ -24,10 +24,7 @@
         <div class="text-center">
           <v-pagination
             v-model="pagination.current_page_number"
-            :length="
-              parseInt(pagination.total_count / pagination.num_items_per_page) +
-              1
-            "
+            :length="parseInt(this.pagination.total_count / this.pagination.num_items_per_page) + 1"
             @input="loadRecords($event)"
           ></v-pagination>
         </div>
@@ -48,7 +45,7 @@ import Probability from "../components/Probability.vue";
 export default {
   data() {
     return {
-      page: 1,
+      page: 1
     };
   },
   components: {
