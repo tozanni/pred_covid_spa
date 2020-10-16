@@ -11,12 +11,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log(to.matched.some((record) => record.meta.anonymous) && store.getters["security/isAnonymous"]);
-  if (to.matched.some((record) => record.meta.anonymous) && store.getters["security/isAnonymous"]) {
-    // this route allows anonymous users
+  if (to.matched.some((record) => record.meta.anonymous)) {
+    if(!store.getters["security/isAnonymous"]) {
+      store.dispatch("security/loginAsAnonymous");
+    }
     next();
-  }
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
+  } else  if (to.matched.some((record) => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     if (store.getters["security/isAuthenticated"] && !store.getters["security/isAnonymous"]) {
@@ -27,14 +27,6 @@ router.beforeEach((to, from, next) => {
         query: { redirect: to.fullPath },
       });
     }
-  } else if (
-    to.name == "medicalRecord" &&
-    !store.getters["security/isAuthenticated"]
-  ) {
-    // User wants to create a record but is not authenticated
-    // login as anonymous
-    store.dispatch("security/loginAsAnonymous");
-    next();
   } else {
     next(); // make sure to always call next()!
   }
