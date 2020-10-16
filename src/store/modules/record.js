@@ -66,8 +66,12 @@ export default {
         })
         .catch((error) => console.error(error));
     },
-    loadRecords({ commit }) {
-      HTTP.get("records")
+    loadRecords({ commit }, page) {
+      HTTP.get("records", {
+        params: {
+          page
+        }
+      })
         .then((res) => {
           res.data.items = res.data.items.map(record => formatRecord(record));
           commit("SET_PAGINATED_RECORDS", res.data);

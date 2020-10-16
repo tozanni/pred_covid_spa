@@ -2,12 +2,13 @@
   <div>
     <v-list v-if="pagination && pagination.items.length" two-line>
       <v-subheader>REPORTS</v-subheader>
-          <v-divider
-            light
-          ></v-divider>
+      <v-divider light></v-divider>
       <v-list-item-group multiple>
         <template v-for="(record, index) in pagination.items">
-          <v-list-item :key="record.id" :to="{name: 'medicalRecord', params: {uuid: record.id}}">
+          <v-list-item
+            :key="record.id"
+            :to="{ name: 'medicalRecord', params: { uuid: record.id } }"
+          >
             <v-list-item-content>
               <Probability
                 :uuid="record.id"
@@ -16,12 +17,24 @@
               />
             </v-list-item-content>
           </v-list-item>
-          <v-divider
-            :key="index"
-            light
-          ></v-divider>
+          <v-divider :key="index" light></v-divider>
         </template>
       </v-list-item-group>
+      <template>
+        <div class="text-center">
+          <v-pagination
+            v-model="pagination.current_page_number"
+            :length="
+              parseInt(pagination.total_count / pagination.num_items_per_page) +
+              1
+            "
+            @input="loadRecords($event)"
+          ></v-pagination>
+        </div>
+      </template>
+    </v-list>
+  </div>
+</template>
     </v-list>
   </div>
 </template>
@@ -33,6 +46,11 @@ import RecordStatus from "../components/RecordStatus";
 import Probability from "../components/Probability.vue";
 
 export default {
+  data() {
+    return {
+      page: 1,
+    };
+  },
   components: {
     RecordStatus,
     Probability,
@@ -41,11 +59,14 @@ export default {
     ...mapState("record", ["pagination"]),
   },
   created() {
-    this.$store.dispatch("record/loadRecords");
+    this.loadRecords(this.page);
     moment.locale("es");
   },
   methods: {
     ...mapActions("record", ["loadRecords"]),
+  },
+  mounted() {
+    this.page = this.pagination.current_page_number;
   },
 };
 </script>
