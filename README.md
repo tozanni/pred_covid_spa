@@ -13,6 +13,8 @@ Create .env file
 API_REST=https://api-dev.rcpcovid19.mx/api/v1/
 ```
 
+
+### Install node dependencies
 ```
 yarn install
 ```
