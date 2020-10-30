@@ -5,7 +5,7 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
-    meta: { title: 'Probabilidad RCP' },
+    meta: { title: 'Predicción de riesgo COVID-19' },
   },
   {
     path: "/login",
