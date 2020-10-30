@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="main">
-      <p>Pagina para calcular sin iniciar sesion</p>
+      <p>Pagina para calcular sin iniciar sesión</p>
       <p>No guarda los datos del paciente</p>
       <v-btn color="primary" x-large rounded :to="{ name: 'medicalRecord' }">
         <v-icon left large dark>mdi-plus</v-icon>
