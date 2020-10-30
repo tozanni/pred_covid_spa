@@ -7,12 +7,14 @@
 
 Install [node](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/getting-started/install)
 
-Create a .env file
+Create .env file
 
 ```
 API_REST=https://api-dev.rcpcovid19.mx/api/v1/
 ```
 
+
+### Install node dependencies
 ```
 yarn install
 ```
