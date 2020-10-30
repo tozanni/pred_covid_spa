@@ -5,7 +5,7 @@
         <v-list-item-content>
           <v-list-item-title class="title">Covid 19</v-list-item-title>
           <v-list-item-subtitle
-            >Calculadora de Probabilidad RcP</v-list-item-subtitle
+            >Predicción de riesgo COVID-19</v-list-item-subtitle
           >
         </v-list-item-content>
       </v-list-item>
