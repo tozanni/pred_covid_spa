@@ -5,7 +5,7 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
-    meta: { title: 'Probabilidad RCP' },
+    meta: { title: 'Predicción de riesgo COVID-19' },
   },
   {
     path: "/login",
@@ -35,7 +35,7 @@ const routes = [
     path: "/medical-record/:uuid?",
     name: "medicalRecord",
     props: true,
-    meta: { title: 'Expediente' },
+    meta: { title: 'Expediente', requiresAuth: true, anonymous: true },
     component: () => import(/* webpackChunkName: "MedicalRecord" */ "../views/MedicalRecord"),
     children: [
       {

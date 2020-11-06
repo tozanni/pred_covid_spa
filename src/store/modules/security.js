@@ -28,7 +28,7 @@ export default {
       };
     },
     isAnonymous(state) {
-      return state.user.username === "anonymous";
+      return state.user ? state.user.username === "anonymous" : false;
     },
   },
   mutations: {

@@ -11,6 +11,8 @@ function formatRecord(record) {
   return record;
 }
 
+//TODO: impement infinite scroll with pagination
+
 export default {
   namespaced: true,
   state: {
@@ -18,6 +20,7 @@ export default {
     persisted: false,
     probability: null,
     pagination: null,
+    probabilities: {}
   },
   computed: {},
   mutations: {
@@ -30,6 +33,9 @@ export default {
     },
     SET_PROBABILITY(state, probability) {
       state.probability = probability;
+      if(state.record) {
+        state.probabilities[state.record.uuid] = probability;
+      }
     },
     UPDATE_RECORD(state, payload) {
       state.record = { ...state.record, ...payload };
@@ -60,8 +66,12 @@ export default {
         })
         .catch((error) => console.error(error));
     },
-    loadRecords({ commit }) {
-      HTTP.get("records")
+    loadRecords({ commit }, page) {
+      HTTP.get("records", {
+        params: {
+          page
+        }
+      })
         .then((res) => {
           res.data.items = res.data.items.map(record => formatRecord(record));
           commit("SET_PAGINATED_RECORDS", res.data);

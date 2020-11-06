@@ -50,8 +50,8 @@ export default {
   computed: {
     admissionFromNow() {
       moment.updateLocale("es");
-      const admissionDate = moment(record.admission_date);
-      return moment(record.admission_date).fromNow();
+      const admissionDate = moment(this.record.admission_date);
+      return moment(this.record.admission_date).fromNow();
     },
     colorCode() {
       return this.probability <= 30
