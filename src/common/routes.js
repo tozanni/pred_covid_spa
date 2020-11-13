@@ -26,6 +26,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "About" */ "../views/About"),
   },
   {
+    path: "/privacidad",
+    name: "privacidad",
+    meta: { title: 'Avisos de Privacidad' },
+    component: () => import(/* webpackChunkName: "AvisosPrivacidad" */ "../views/AvisosPrivacidad"),
+  },
+  {
     path: "/contact",
     name: "contact",
     meta: { title: 'Contacto' },
