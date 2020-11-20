@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="main">
-      <p>Pagina para calcular sin iniciar sesión</p>
+      <p>Página para calcular sin iniciar sesión</p>
       <p>No guarda los datos del paciente</p>
       <v-btn color="primary" x-large rounded :to="{ name: 'medicalRecord' }">
         <v-icon left large dark>mdi-plus</v-icon>
@@ -10,7 +10,7 @@
     </div>
     <div class="login" v-if="!isAuthenticated || isAnonymous">
       <p>
-        Inicia sesion con una cuenta para llevar un historial de los pacientes
+        Inicia sesión con una cuenta para llevar un historial de los pacientes
       </p>
       <v-btn :to="{ name: 'login' }" color="primary" x-large rounded>
         iniciar sesion

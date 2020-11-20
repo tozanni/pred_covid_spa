@@ -8,7 +8,7 @@
           v-slot="{ errors, valid }"
         >
           <v-text-field
-            label="Dias enfermo antes de ingreso"
+            label="Días enfermo antes de ingreso"
             v-model.number="form.days_before_admission"
             suffix="dias"
             type="number"
@@ -17,7 +17,7 @@
           ></v-text-field>
         </ValidationProvider>
         <v-checkbox v-model="form.difficulty_breathing" label="Dificultad para respirar"></v-checkbox>
-        <v-checkbox v-model="form.chest_pain" label="Dolor Toracico"></v-checkbox>
+        <v-checkbox v-model="form.chest_pain" label="Dolor Torácico"></v-checkbox>
         <v-checkbox v-model="form.pregnant" label="Embarazo"></v-checkbox>
         <v-checkbox v-model="form.smoker" label="Fumador"></v-checkbox>
         <div class="spacer"></div>
@@ -44,7 +44,7 @@
         <v-select
           v-model="form.other_symptoms"
           :items="symptomsList"
-          label="Otros sintomas:"
+          label="Otros síntomas:"
           multiple
           chips
         ></v-select>

@@ -141,7 +141,7 @@
         >
           <v-text-field
             id="oximetry"
-            label="Oximetria:"
+            label="Oximetría:"
             v-model.number="form.oximetry"
             suffix="%"
             type="number"

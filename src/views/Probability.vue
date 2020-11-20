@@ -8,7 +8,7 @@
       :indeterminate="false"
     >{{ probability }}%</v-progress-circular>
     <h2>Probabilidad De Requerir RCP</h2>
-    <span class="subtitle-1">(Reanimacion Cardiopulmonar)</span>
+    <span class="subtitle-1">(Reanimación Cardiopulmonar)</span>
     <br />
     <br />
     <strong>#{{ record.id.match(/.{5}/)[0] }}</strong>

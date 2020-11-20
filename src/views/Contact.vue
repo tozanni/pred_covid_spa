@@ -67,8 +67,8 @@ export default {
       },
       items: [
         "Quiero colaborar",
-        "Retroalimentacion",
-        "Reportar Error",
+        "Retroalimentación",
+        "Reportar error",
         "Otro (Escribir)",
       ],
     };
