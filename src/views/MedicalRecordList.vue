@@ -5,14 +5,13 @@
           v-model="search" append-icon="mdi-magnify" label="Buscar"
           single-line hide-details
           @change="searchRecords(search)"></v-text-field>
-      <v-subheader>REPORTS</v-subheader>
+      <v-subheader>LISTADO DE EXPEDIENTES</v-subheader>
       <v-divider light></v-divider>
       <v-list-item-group multiple>
         <template v-for="(record, index) in pagination.items">
           <v-list-item
               :key="record.id"
-              :to="{ name: 'medicalRecord', params: { uuid: record.id } }"
-          >
+              :to="{ name: 'medicalRecord', params: { uuid: record.id } }">
             <v-list-item-content>
               <Probability
                   :uuid="record.id"
