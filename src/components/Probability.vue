@@ -9,7 +9,9 @@
     >{{ probability }}</v-progress-circular>
     <v-progress-circular v-else color="grey darken-1" size="55" width="7" :value="probability">NA</v-progress-circular>
     <div class="meta-data" v-if="uuid">
-      <span class="font-weight-bold">#{{ uuid.substring(0,6) }}</span>
+      <span >#{{ uuid.substring(0,6) }}</span>
+      <br />
+      <span class="font-weight-bold" v-if="id_canonical">Id paciente: {{ id_canonical }}</span>
       <br />
       <span class="text--secondary caption">Ingreso: {{admissionFromNow}}</span>
       <br />
@@ -35,6 +37,10 @@ export default {
       type: Number
     },
     uuid: {
+      type: String,
+      required: false,
+    },
+    id_canonical: {
       type: String,
       required: false,
     }

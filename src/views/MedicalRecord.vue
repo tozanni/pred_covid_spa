@@ -72,6 +72,7 @@
         <Probability
           :probability="probability"
           :uuid="uuid"
+          :id_canonical="record.id_canonical"
           :admission-date="record.admission_date"
         />
       </v-col>
