@@ -40,7 +40,7 @@ export default {
   data: () => ({
     labs: {
       hematic_biometry: {
-        title: "Biometria Hematica",
+        title: "Biometría Hemática",
         fields: {
           hematocrit: {
             name: "Hematocrito",
@@ -84,7 +84,7 @@ export default {
         },
       },
       blood_chemistry: {
-        title: "Quimica Sanguinea",
+        title: "Química Sanguínea",
         fields: {
           glucose: {
             name: "Glucosa",
@@ -111,13 +111,13 @@ export default {
             type: "number",
           },
           triglycerides: {
-            name: "Trigliceridos",
+            name: "Triglicéridos",
             units: "mg/dL",
             value: null,
             type: "number",
           },
           glycated_hemoglobin: {
-            name: "Hemoglobina Glicida",
+            name: "Hemoglobina Glicada",
             units: "%",
             value: null,
             type: "number",
@@ -125,7 +125,7 @@ export default {
         },
       },
       serum_electrolytes: {
-        title: "Electrolitos Sericos",
+        title: "Electrólitos Séricos",
         fields: {
           sodium: {
             name: "Sodio",
@@ -142,7 +142,7 @@ export default {
         },
       },
       liver_function: {
-        title: "Funcion Hepatica",
+        title: "Función Hepática",
         fields: {
           aspartate_aminotransferase: {
             name: "Aspartato Aminotransferasa",
@@ -157,7 +157,7 @@ export default {
             type: "number",
           },
           blood_urea_nitrogen: {
-            name: "BUN Serico (Nitrogeno Ureico)",
+            name: "BUN Sérico (Nitrógeno Ureico)",
             units: "mg/dL",
             value: null,
             type: "number",
@@ -165,7 +165,7 @@ export default {
         },
       },
       clotting_time: {
-        title: "Tiempos de Coagulacion",
+        title: "Tiempos de Coagulación",
         fields: {
           prothrombin: {
             name: "Protrombina (TP)",
@@ -182,10 +182,10 @@ export default {
         },
       },
       immunological: {
-        title: "Inmunologia",
+        title: "Inmunología",
         fields: {
           reactive_protein_c: {
-            name: "Proteina C Reactiva",
+            name: "Proteína C Reactiva",
             units: "Mg/dL",
             value: null,
             type: "number",
@@ -205,7 +205,7 @@ export default {
         },
       },
       cardiac_enzymes: {
-        title: "Enzimas Cardiacas",
+        title: "Enzimas Cardíacas",
         fields: {
           cpk: {
             name: "CPK",
@@ -257,10 +257,10 @@ export default {
         }
       },
       imaging: {
-        title: "Imagenologia",
+        title: "Imagenología",
         fields: {
           radiography: {
-            name: "Radiografia de Torax o TAC",
+            name: "Radiografía de Torax o TAC",
             value: null,
             type: "boolean",
           },

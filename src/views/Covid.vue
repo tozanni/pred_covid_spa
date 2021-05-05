@@ -53,7 +53,7 @@ export default {
             },
             {
               value: "negative",
-              text: "Negative",
+              text: "Negativo",
             },
           ],
         },

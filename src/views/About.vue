@@ -55,5 +55,8 @@
             Edenred
         </p>
         -->
+        <v-footer absolute>      
+        <router-link :to="{name: 'privacidad'}">Aviso de privacidad</router-link>
+        </v-footer>
     </v-container>
 </template>

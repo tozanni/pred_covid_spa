@@ -114,7 +114,7 @@
         :disabled="!record.triage"
       />
       <CardLink
-        title="Notas Medicas"
+        title="Notas Médicas"
         :subtitle="record.medical_notes ? 'Completado' : ''"
         :to="{ name: 'notes', params: { uuid } }"
         :disabled="!record.vital_signs"
