@@ -14,9 +14,16 @@
               :to="{ name: 'medicalRecord', params: { uuid: record.id } }">
             <v-list-item-content>
               <Probability
+<<<<<<< HEAD
+                :id_canonical="record.id_canonical"
+                :uuid="record.id"
+                :probability="record.probability"
+                :admission-date="record.admission_date"
+=======
                   :uuid="record.id"
                   :probability="record.probability"
                   :admission-date="record.admission_date"
+>>>>>>> master
               />
             </v-list-item-content>
           </v-list-item>
