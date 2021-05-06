@@ -135,7 +135,7 @@
           ></v-text-field>
         </ValidationProvider>
         <ValidationProvider
-          rules="required|between:10,99"
+          rules="between:10,99"
           name="oximetry"
           v-slot="{ errors, valid }"
         >
@@ -150,7 +150,7 @@
           ></v-text-field>
         </ValidationProvider>
         <ValidationProvider
-          rules="required|between:10,99"
+          rules="between:10,99"
           name="capillary_glucose"
           v-slot="{ errors, valid }"
         >
@@ -207,8 +207,8 @@ export default {
           heart_rate: this.form.heart_rate,
           breathing_frequency: this.form.breathing_frequency,
           temperature: this.form.temperature,
-          oximetry: this.form.oximetry,
-          capillary_glucose: this.form.capillary_glucose,
+          oximetry: (this.form.oximetry ? this.form.oximetry : 0),
+          capillary_glucose: (this.form.capillary_glucose ? this.form.capillary_glucose : 0),
           //TODO: agregar IMC al modelo?
         },
       };
