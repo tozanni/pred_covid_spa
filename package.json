@@ -18,7 +18,7 @@
     "copy-webpack-plugin": "^5.1.1",
     "core-js": "^3.6.5",
     "dotenv-webpack": "^1.8.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "move-file": "1.2.0",
     "postcss-loader": "^3.0.0",
     "regenerator-runtime": "^0.13.5",
